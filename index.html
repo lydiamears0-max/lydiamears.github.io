@@ -8,11 +8,8 @@
 <title>pink assassins · class plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-
-<!-- Firebase via CDN -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -26,9 +23,8 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 #app{width:100vw;height:100vh;display:flex;overflow:hidden;}
 .screen{display:none;width:100%;height:100%;}
 .screen.active{display:flex;}
-
 .wordmark{font-family:'DM Serif Display',serif;font-style:italic;color:var(--ink);line-height:1;}
-.wordmark.lg{font-size:58px;letter-spacing:-1px;}
+.wordmark.lg{font-size:52px;letter-spacing:-1px;}
 .wordmark.sm{font-size:13px;color:var(--stone);letter-spacing:0;margin-bottom:6px;}
 .eyebrow,.lbl{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--stone);display:block;}
 .lbl-xs{font-size:8.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);}
@@ -43,11 +39,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 .dark-inp{width:100%;padding:8px 10px;background:#222;border:1px solid #3a3a3a;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:#ddd;outline:none;height:36px;}
 .dark-inp:focus{border-color:#555;}
 .ta{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
-.ta::placeholder{color:var(--stone);opacity:.6;}
+.ta::placeholder,.plan-ta::placeholder{color:var(--stone);opacity:.6;}
 .panel{padding:22px 24px;display:flex;flex-direction:column;gap:16px;height:100%;overflow-y:auto;}
 .field-block{display:flex;flex-direction:column;gap:7px;}
-
-/* sync */
 .sync-bar{display:flex;align-items:center;gap:6px;font-size:10px;color:#555;margin-top:8px;}
 .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#555;}
 .sync-dot.ok{background:#4a9d6f;}
@@ -57,19 +51,19 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 
 /* HOME */
 #home{flex-direction:row;}
-.home-left{width:300px;flex-shrink:0;background:var(--ink);padding:44px 36px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;}
+.home-left{width:280px;flex-shrink:0;background:var(--ink);padding:36px 30px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;}
 .home-left .wordmark{color:var(--surface);}
 .home-tagline{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#555;}
-.home-left-nav{display:flex;flex-direction:column;gap:8px;margin-top:24px;}
+.home-left-nav{display:flex;flex-direction:column;gap:6px;margin-top:20px;}
 .home-nav-btn{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#555;text-align:left;padding:6px 0;border-bottom:1px solid #2a2a2a;transition:color .12s;}
 .home-nav-btn.active{color:#aaa;}
 .home-right{flex:1;background:var(--surface);display:flex;flex-direction:column;overflow:hidden;}
-.home-tab-content{flex:1;overflow-y:auto;padding:36px 40px;}
-.home-plans-grid{display:flex;gap:36px;}
+.home-tab-content{flex:1;overflow-y:auto;padding:32px 36px;}
+.home-plans-grid{display:flex;gap:32px;}
 .home-col{flex:1;display:flex;flex-direction:column;gap:14px;}
-.tmpl-tile{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px 20px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:all .15s;}
+.tmpl-tile{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 18px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:all .15s;}
 .tmpl-tile:hover{border-color:var(--border2);background:var(--panel);}
-.tmpl-day{font-family:'DM Serif Display',serif;font-size:26px;font-style:italic;color:var(--ink);}
+.tmpl-day{font-family:'DM Serif Display',serif;font-size:24px;font-style:italic;color:var(--ink);}
 .tmpl-time{font-size:11px;color:var(--stone);}
 .tmpl-dur{margin-top:5px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--putty);}
 .saved-row{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 15px;cursor:pointer;transition:all .15s;margin-bottom:9px;}
@@ -105,7 +99,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 
 /* BUILDER */
 #builder{flex-direction:row;}
-.builder-left{width:290px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
+.builder-left{width:280px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
 .builder-right{flex:1;background:var(--surface);overflow-y:auto;}
 .builder-left .lbl,.builder-left .lbl-xs,.builder-left .back-lnk{color:#555;}
 .builder-left .back-lnk:hover{color:#999;}
@@ -132,7 +126,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 
 /* PLAN */
 #plan{flex-direction:row;}
-.plan-sidebar{width:240px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
+.plan-sidebar{width:230px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
 .plan-sidebar .lbl{color:#555;}
 .plan-main{flex:1;background:var(--bg);overflow-y:auto;}
 .plan-inner{padding:20px 24px 80px;display:flex;flex-direction:column;gap:12px;}
@@ -163,8 +157,52 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 .sname{font-size:12px;color:var(--ink);}
 .stunt-inp{width:60px;padding:4px 6px;background:var(--panel);border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);text-align:center;outline:none;display:block;margin:0 auto;}
 .plan-ta{width:100%;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
-.plan-ta::placeholder{color:var(--stone);opacity:.6;}
 .end-mark{text-align:center;padding:28px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--border);}
+
+/* FULLOUTS */
+#fullouts{flex-direction:row;}
+.fo-left{width:280px;flex-shrink:0;background:var(--ink);padding:28px 24px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;}
+.fo-right{flex:1;background:var(--bg);overflow-y:auto;padding:24px 28px 80px;}
+.fo-session-row{background:rgba(255,255,255,0.05);border:1px solid #2a2a2a;border-radius:10px;padding:12px 14px;cursor:pointer;margin-bottom:8px;transition:all .12s;}
+.fo-session-row:hover,.fo-session-row.active{background:rgba(255,255,255,0.08);border-color:#444;}
+.fo-session-date{font-family:'DM Serif Display',serif;font-size:16px;font-style:italic;color:#ccc;}
+.fo-session-count{font-size:10px;color:#555;margin-top:2px;}
+.fo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.fo-card-hd{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--border);}
+.fo-card-title{font-family:'DM Serif Display',serif;font-size:18px;font-style:italic;color:var(--ink);}
+.fo-card-body{padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
+.fo-field{display:flex;flex-direction:column;gap:5px;}
+.fo-lbl{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);}
+.fo-inp{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;}
+.fo-inp:focus{border-color:var(--border2);}
+.fo-ta{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
+.fo-ta::placeholder{color:var(--stone);opacity:.6;}
+.deduction-row{display:flex;gap:8px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);}
+.deduction-row:last-child{border-bottom:none;}
+.ded-type-sel{flex:0 0 auto;}
+.ded-type-btn{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--ink-lt);background:var(--panel);cursor:pointer;white-space:nowrap;}
+.ded-desc{flex:1;padding:6px 10px;background:var(--panel);border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;}
+.ded-remove{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:4px;}
+.ded-remove:hover{color:var(--red);}
+.ded-points{font-size:10px;font-weight:700;color:var(--red);padding:6px 4px;white-space:nowrap;}
+.deductions-total{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--panel);border-top:1px solid var(--border);}
+.deductions-total-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);}
+.deductions-total-val{font-size:16px;font-weight:700;color:var(--red);}
+.ded-type-dropdown{position:relative;display:inline-block;}
+.ded-type-menu{position:absolute;top:100%;left:0;z-index:100;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.1);min-width:260px;overflow:hidden;margin-top:4px;}
+.ded-type-menu-hd{padding:6px 12px;font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);background:var(--panel);border-bottom:1px solid var(--border);}
+.ded-type-option{padding:8px 12px;cursor:pointer;font-size:12px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+.ded-type-option:last-child{border-bottom:none;}
+.ded-type-option:hover{background:var(--panel);}
+.ded-type-option .opt-pts{font-size:11px;font-weight:700;color:var(--red);}
+.add-ded-btn{background:none;border:1px solid var(--border);border-radius:7px;padding:7px 14px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--stone);cursor:pointer;display:flex;align-items:center;gap:6px;}
+.add-ded-btn:hover{border-color:var(--border2);color:var(--ink);}
+.add-fo-btn{width:100%;padding:10px;background:rgba(255,255,255,0.07);border:1px solid #333;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:#bbb;cursor:pointer;letter-spacing:.5px;}
+.add-fo-btn:hover{background:rgba(255,255,255,0.1);}
+.fo-video-link{display:flex;align-items:center;gap:8px;}
+.fo-video-link a{font-size:12px;color:#4a9d6f;text-decoration:none;}
+.fo-video-link a:hover{text-decoration:underline;}
+.no-session-msg{font-size:13px;color:var(--stone);font-style:italic;text-align:center;padding:40px 20px;}
 </style>
 </head>
 <body>
@@ -174,11 +212,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
   <div id="home" class="screen active">
     <div class="home-left">
       <div style="flex:1"></div>
-      <div class="wordmark lg">pink<br/>assassins</div>
+      <img src="https://lydiamears0-max.github.io/lydiamears.github.io/logo.png" alt="Pink Assassins" style="width:210px;margin-bottom:12px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))"/>
       <div class="home-tagline">class plan generator</div>
       <div class="home-left-nav">
         <button class="home-nav-btn active" onclick="homeTab('plans',this)">plans</button>
         <button class="home-nav-btn" onclick="homeTab('analytics',this)">analytics</button>
+        <button class="home-nav-btn" onclick="goFullouts()">fullouts</button>
       </div>
       <div class="sync-bar">
         <div class="sync-dot busy" id="home-sync-dot"></div>
@@ -192,12 +231,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
             <span class="eyebrow">new plan</span>
             <div class="tmpl-tile" onclick="startBuilder('monday')">
               <span class="tmpl-day">monday</span>
-              <span class="tmpl-time">4:00 pm – 5:45 pm</span>
+              <span class="tmpl-time">4:00 pm - 5:45 pm</span>
               <span class="tmpl-dur">105 min</span>
             </div>
             <div class="tmpl-tile" onclick="startBuilder('wednesday')">
               <span class="tmpl-day">wednesday</span>
-              <span class="tmpl-time">7:00 pm – 9:00 pm</span>
+              <span class="tmpl-time">7:00 pm - 9:00 pm</span>
               <span class="tmpl-dur">120 min</span>
             </div>
           </div>
@@ -217,9 +256,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
   <div id="builder" class="screen">
     <div class="builder-left">
       <div class="panel">
-        <button class="back-lnk" onclick="goHome()">← back</button>
+        <button class="back-lnk" onclick="goHome()">back</button>
+        <img src="https://lydiamears0-max.github.io/lydiamears.github.io/logo.png" alt="Pink Assassins" style="width:120px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));margin-bottom:4px"/>
         <div>
-          <div class="wordmark sm" style="color:#555">pink assassins</div>
           <h1 class="hero-title" id="b-title" style="color:#f7f6f4;white-space:pre-line"></h1>
           <div style="font-size:11px;color:#666;margin-top:3px" id="b-time"></div>
         </div>
@@ -234,10 +273,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
           <div class="prog-meta"><span id="b-used">0 min</span><span id="b-total"></span></div>
         </div>
         <button class="btn-dark-full" onclick="savePlan()">save plan</button>
-        <div class="sync-bar">
-          <div class="sync-dot" id="builder-sync-dot"></div>
-          <span id="builder-sync-label"></span>
-        </div>
+        <div class="sync-bar"><div class="sync-dot" id="builder-sync-dot"></div><span id="builder-sync-label"></span></div>
       </div>
     </div>
     <div class="builder-right">
@@ -260,12 +296,13 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
     <div class="plan-sidebar">
       <div class="panel">
         <div class="sidebar-top">
-          <button class="back-lnk" style="color:#666" onclick="goHome()">← back</button>
+          <button class="back-lnk" style="color:#666" onclick="goHome()">back</button>
           <button class="btn-pill-inv" onclick="editPlan()">edit</button>
         </div>
         <div>
           <div class="wordmark sm" style="color:#555">pink assassins</div>
-          <h1 class="hero-title" id="p-title" style="color:#f7f6f4;font-size:28px;white-space:pre-line"></h1>
+          <img src="https://lydiamears0-max.github.io/lydiamears.github.io/logo.png" alt="Pink Assassins" style="width:110px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));margin:4px 0 8px"/>
+          <h1 class="hero-title" id="p-title" style="color:#f7f6f4;font-size:26px;white-space:pre-line"></h1>
           <div style="font-size:11px;color:#666;margin-top:3px" id="p-time"></div>
           <div style="font-size:10px;color:#777;margin-top:2px" id="p-date"></div>
           <div class="dur-pill" id="p-dur"></div>
@@ -274,10 +311,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
           <div class="lbl" style="margin-bottom:8px">attendance</div>
           <div class="attend-list" id="attend-list"></div>
         </div>
-        <div class="sync-bar">
-          <div class="sync-dot" id="plan-sync-dot"></div>
-          <span id="plan-sync-label"></span>
-        </div>
+        <div class="sync-bar"><div class="sync-dot" id="plan-sync-dot"></div><span id="plan-sync-label"></span></div>
       </div>
     </div>
     <div class="plan-main">
@@ -285,43 +319,77 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);}
     </div>
   </div>
 
+  <!-- FULLOUTS -->
+  <div id="fullouts" class="screen">
+    <div class="fo-left">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <button class="back-lnk" style="color:#666" onclick="goHome()">back</button>
+      </div>
+      <div>
+        <div class="wordmark sm" style="color:#555">pink assassins</div>
+        <h1 style="font-family:'DM Serif Display',serif;font-size:28px;font-style:italic;color:#f7f6f4;line-height:1.1">fullout<br/>tracker</h1>
+      </div>
+      <button class="add-fo-btn" onclick="addFulloutSession()">+ new session</button>
+      <div id="fo-session-list" style="margin-top:8px"></div>
+      <div class="sync-bar"><div class="sync-dot" id="fo-sync-dot"></div><span id="fo-sync-label"></span></div>
+    </div>
+    <div class="fo-right" id="fo-right">
+      <div class="no-session-msg">Select a session from the left, or create a new one.</div>
+    </div>
+  </div>
+
 </div>
+
 <script>
-/* ─── FIREBASE INIT ─── */
 firebase.initializeApp({
   apiKey: "AIzaSyDXpwLB28me7B3n5wG3coWF3QtQ0JSNBPo",
   authDomain: "pink-assassins.firebaseapp.com",
   projectId: "pink-assassins",
   storageBucket: "pink-assassins.firebasestorage.app",
   messagingSenderId: "941908531651",
-  appId: "1:941908531651:web:dc1c60ae3843219f5ac576",
+  appId: "1:941908531651:web:dc1c60ae3843219f5ac576"
 });
 const db = firebase.firestore();
 const plansCol = db.collection("plans");
+const foCol = db.collection("fulloutSessions");
 
-/* ─── CONSTANTS ─── */
 const ATHLETES = ["Mia","Phoenix","Addi","Makayla","Ruby","Ada","Airlie"];
+const ATHLETE_LABELS = {"Mia":"Mia's group","Phoenix":"Phoenix's group","Addi":"Addi's group","Makayla":"Makayla's group","Ruby":"Ruby's group","Ada":"Ada's group","Airlie":"Airlie's group"};
+function aLabel(name){return ATHLETE_LABELS[name]||name;}
 const CATEGORIES = [
-  {id:"conditioning",        label:"Conditioning",        icon:"◈"},
-  {id:"stunt1",              label:"1st Stunt",           icon:"★",stunt:true},
-  {id:"stunt2",              label:"2nd Stunt",           icon:"★",stunt:true},
-  {id:"tosses",              label:"Tosses",              icon:"◉"},
-  {id:"jumps",               label:"Jumps",               icon:"◆"},
-  {id:"standing_tumbling",   label:"Standing Tumbling",   icon:"◎"},
-  {id:"running_tumbling",    label:"Running Tumbling",    icon:"▷"},
-  {id:"pyramid",             label:"Pyramid",             icon:"▲"},
-  {id:"end_dance",           label:"End Dance",           icon:"◐"},
-  {id:"routine_cleaning",    label:"Routine Cleaning",    icon:"✦"},
-  {id:"section_run_throughs",label:"Section Run Throughs",icon:"↺"},
+  {id:"conditioning",label:"Conditioning",icon:"&loz;"},
+  {id:"stunt1",label:"1st Stunt",icon:"&star;",stunt:true},
+  {id:"stunt2",label:"2nd Stunt",icon:"&star;",stunt:true},
+  {id:"tosses",label:"Tosses",icon:"&#9689;"},
+  {id:"jumps",label:"Jumps",icon:"&#9670;"},
+  {id:"standing_tumbling",label:"Standing Tumbling",icon:"&#9678;"},
+  {id:"running_tumbling",label:"Running Tumbling",icon:"&#9655;"},
+  {id:"pyramid",label:"Pyramid",icon:"&#9650;"},
+  {id:"end_dance",label:"End Dance",icon:"&#9680;"},
+  {id:"routine_cleaning",label:"Routine Cleaning",icon:"&#10022;"},
+  {id:"section_run_throughs",label:"Section Run Throughs",icon:"&#8634;"},
+  {id:"fullout",label:"Fullout",icon:"&#9654;"}
 ];
 const TIMES = [5,10,15,20,25,30,35,40,45,60];
 const TEMPLATES = {
-  monday:    {id:"monday",    display:"Monday",    time:"4:00 pm – 5:45 pm",duration:105},
-  wednesday: {id:"wednesday", display:"Wednesday", time:"7:00 pm – 9:00 pm", duration:120},
+  monday:{id:"monday",display:"Monday",time:"4:00 pm - 5:45 pm",duration:105},
+  wednesday:{id:"wednesday",display:"Wednesday",time:"7:00 pm - 9:00 pm",duration:120}
 };
 
-/* ─── STATE ─── */
+const DEDUCTION_TYPES = [
+  {category:"ROUTINE INFRACTIONS",items:[
+    {label:"Athlete Fall",points:0.25},
+    {label:"Building Bobble",points:0.40},
+    {label:"Building Fall",points:0.75},
+    {label:"Major Building Fall",points:1.25}
+  ]},
+  {category:"RULE VIOLATIONS",items:[
+    {label:"Building safety violation",points:1.0}
+  ]}
+];
+
 let plansCache = [];
+let foCache = [];
 let currentTemplateId = null;
 let currentPlanId = null;
 let pickedCat = null;
@@ -329,13 +397,14 @@ let sections = [];
 let saveTimer = null;
 let currentHomeTab = "plans";
 let analyticsLesson = "all";
-let unsubscribe = null;
+let analyticsTab = "plans";
+let currentFoSessionId = null;
+let activeDedDropdown = null;
 
-/* ─── HELPERS ─── */
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
 function nextWeekday(n){const d=new Date();const diff=(n-d.getDay()+7)%7||7;d.setDate(d.getDate()+diff);return d.toISOString().split("T")[0];}
 function fmtDate(s){if(!s)return"";return new Date(s+"T12:00:00").toLocaleDateString("en-AU",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}
-function fmtDateShort(s){if(!s)return"—";return new Date(s+"T12:00:00").toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"});}
+function fmtDateShort(s){if(!s)return"--";return new Date(s+"T12:00:00").toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"});}
 function escHtml(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");}
 function setSyncDot(ctx,state,label){
@@ -346,30 +415,37 @@ function setSyncDot(ctx,state,label){
   lbl.textContent=label||"";
 }
 function getPlan(id){return plansCache.find(p=>p.id===id)||null;}
+function getFoSession(id){return foCache.find(s=>s.id===id)||null;}
 
-/* ─── FIREBASE LIVE SYNC ─── */
+// Close dropdown on outside click
+document.addEventListener("click",function(e){
+  if(activeDedDropdown && !activeDedDropdown.contains(e.target)){
+    activeDedDropdown.querySelector(".ded-type-menu").style.display="none";
+    activeDedDropdown=null;
+  }
+});
+
 function startLiveSync(){
   setSyncDot("home","busy","connecting...");
-  unsubscribe = plansCol.orderBy("updated_at","desc").onSnapshot(snap=>{
-    plansCache = snap.docs.map(d=>d.data());
+  plansCol.orderBy("updated_at","desc").onSnapshot(snap=>{
+    plansCache=snap.docs.map(d=>d.data());
     setSyncDot("home","ok","live sync on");
     renderSaved();
-    if(currentHomeTab==="analytics") renderAnalytics();
-  }, err=>{
-    console.error(err);
-    setSyncDot("home","err","connection failed");
+    if(currentHomeTab==="analytics")renderAnalytics();
+  },err=>{setSyncDot("home","err","connection failed");});
+
+  foCol.orderBy("date","desc").onSnapshot(snap=>{
+    foCache=snap.docs.map(d=>d.data());
+    renderFoSessionList();
   });
 }
 
-async function dbSave(plan){
-  plan.updated_at = new Date().toISOString();
-  await plansCol.doc(plan.id).set(plan);
-}
-async function dbDelete(id){
-  await plansCol.doc(id).delete();
-}
+async function dbSave(plan){plan.updated_at=new Date().toISOString();await plansCol.doc(plan.id).set(plan);}
+async function dbDelete(id){await plansCol.doc(id).delete();}
+async function foSave(session){session.updated_at=new Date().toISOString();await foCol.doc(session.id).set(session);}
+async function foDelete(id){await foCol.doc(id).delete();}
 
-/* ═══ HOME ═══ */
+/* HOME */
 function homeTab(tab,btn){
   currentHomeTab=tab;
   document.querySelectorAll(".home-nav-btn").forEach(b=>b.classList.remove("active"));
@@ -388,13 +464,7 @@ function renderSaved(){
   const undated=plansCache.filter(p=>!p.date);
   list.innerHTML=[...sorted,...undated].map(p=>{
     const t=TEMPLATES[p.templateId]||{};
-    return`<div class="saved-row" onclick="openPlan('${p.id}')">
-      <div>
-        <div class="saved-day">${escHtml(t.display||p.templateId)}</div>
-        <div class="saved-date">${p.date?fmtDate(p.date):"no date set"}</div>
-      </div>
-      <button class="del-btn" onclick="deletePlan(event,'${p.id}')">✕</button>
-    </div>`;
+    return'<div class="saved-row" onclick="openPlan(\''+p.id+'\')"><div><div class="saved-day">'+escHtml(t.display||p.templateId)+'</div><div class="saved-date">'+(p.date?fmtDate(p.date):"no date set")+'</div></div><button class="del-btn" onclick="deletePlan(event,\''+p.id+'\')">x</button></div>';
   }).join("");
 }
 
@@ -404,59 +474,143 @@ async function deletePlan(e,id){
   await dbDelete(id);
 }
 
-/* ═══ ANALYTICS ═══ */
+/* ANALYTICS */
 function renderAnalytics(){
   const el=document.getElementById("analytics-content");
-  if(!plansCache.length){el.innerHTML='<div class="no-data" style="padding:20px 0">No plans yet. Generate some class plans to see analytics here.</div>';return;}
+  if(!plansCache.length){el.innerHTML='<div class="no-data" style="padding:20px 0">No plans yet.</div>';return;}
   const filtered=analyticsLesson==="all"?plansCache:plansCache.filter(p=>p.templateId===analyticsLesson);
   const sorted=[...filtered].filter(p=>p.date).sort((a,b)=>a.date.localeCompare(b.date));
+  // Main tab switcher
+  let aHtml='<div class="analytics-title">analytics</div>';
+  aHtml+='<div style="display:flex;gap:8px;margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:12px">';
+  aHtml+='<button style="padding:7px 18px;border:1px solid '+(analyticsTab==='plans'?'var(--ink)':'var(--border)')+';border-radius:100px;font-family:\'DM Sans\',sans-serif;font-size:11px;font-weight:600;color:'+(analyticsTab==='plans'?'white':'var(--stone)')+';background:'+(analyticsTab==='plans'?'var(--ink)':'transparent')+';cursor:pointer" onclick="setAnalyticsTab(\'plans\')">class plans</button>';
+  aHtml+='<button style="padding:7px 18px;border:1px solid '+(analyticsTab==='fullouts'?'var(--ink)':'var(--border)')+';border-radius:100px;font-family:\'DM Sans\',sans-serif;font-size:11px;font-weight:600;color:'+(analyticsTab==='fullouts'?'white':'var(--stone)')+';background:'+(analyticsTab==='fullouts'?'var(--ink)':'transparent')+';cursor:pointer" onclick="setAnalyticsTab(\'fullouts\')">fullouts</button>';
+  aHtml+='</div>';
+  if(analyticsTab==='plans'){
+    aHtml+='<div class="lesson-tabs"><div class="lesson-tab'+(analyticsLesson==='all'?' active':'')+'" onclick="setAnalyticsLesson(\'all\')">all lessons</div><div class="lesson-tab'+(analyticsLesson==='monday'?' active':'')+'" onclick="setAnalyticsLesson(\'monday\')">monday</div><div class="lesson-tab'+(analyticsLesson==='wednesday'?' active':'')+'" onclick="setAnalyticsLesson(\'wednesday\')">wednesday</div></div>';
+    aHtml+='<div class="analytics-title">stunt group attendance</div><div class="analytics-sub">'+sorted.length+' lesson'+(sorted.length!==1?'s':'')+' tracked</div>'+renderAttTable(sorted);
+    aHtml+='<div class="analytics-title">1st stunt performance</div><div class="analytics-sub">attempts & hit % per lesson</div>'+renderStuntPerLesson(sorted,'stunt1');
+    aHtml+='<div class="analytics-title" style="margin-top:20px">2nd stunt performance</div><div class="analytics-sub">attempts & hit % per lesson</div>'+renderStuntPerLesson(sorted,'stunt2');
+    aHtml+='<div class="analytics-title" style="margin-top:20px">overall stunt totals</div><div class="analytics-sub">combined across all selected lessons</div>'+renderStuntTotals(filtered,'stunt1','1st Stunt')+renderStuntTotals(filtered,'stunt2','2nd Stunt');
+  } else {
+    aHtml+=renderFulloutAnalytics();
+  }
+  el.innerHTML=aHtml
+}
+function setAnalyticsTab(tab){analyticsTab=tab;renderAnalytics();}
 
-  el.innerHTML=`
-    <div class="analytics-title">analytics</div>
-    <div class="analytics-sub" style="margin-bottom:20px">tracking attendance & stunt performance over time</div>
-    <div class="lesson-tabs">
-      <div class="lesson-tab${analyticsLesson==="all"?" active":""}" onclick="setAnalyticsLesson('all')">all lessons</div>
-      <div class="lesson-tab${analyticsLesson==="monday"?" active":""}" onclick="setAnalyticsLesson('monday')">monday</div>
-      <div class="lesson-tab${analyticsLesson==="wednesday"?" active":""}" onclick="setAnalyticsLesson('wednesday')">wednesday</div>
-    </div>
+function renderFulloutAnalytics(){
+  if(!foCache.length) return '<div class="no-data" style="padding:20px 0">No fullout sessions recorded yet.</div>';
+  const sessions=[...foCache].filter(s=>s.date).sort((a,b)=>a.date.localeCompare(b.date));
+  let html='';
 
-    <div class="analytics-title">stunt group attendance</div>
-    <div class="analytics-sub">${sorted.length} lesson${sorted.length!==1?"s":""} tracked</div>
-    ${renderAttTable(sorted)}
+  // ── STUNT HIT RATES ──
+  html+='<div class="analytics-title">stunt group hit rates</div>';
+  html+='<div class="analytics-sub">percentage of fullouts each group hit — across all sessions</div>';
 
-    <div class="analytics-title">1st stunt performance</div>
-    <div class="analytics-sub">attempts & hit % per lesson</div>
-    ${renderStuntPerLesson(sorted,"stunt1")}
+  ['stunt1Hits','stunt2Hits'].forEach((key,ki)=>{
+    const label=ki===0?'1st Stunt':'2nd Stunt';
+    let totalFo=0;
+    sessions.forEach(s=>{ if(s.fullouts) totalFo+=s.fullouts.length; });
+    if(!totalFo){html+='<div class="no-data">'+label+': no data.</div>';return;}
+    html+='<div style="margin-bottom:16px"><div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);margin-bottom:8px">'+label+'</div>';
+    html+='<div class="totals-card"><div class="totals-hd"><span>group</span><span>hits</span><span>fullouts</span><span>rate</span><span>%</span></div>';
+    ATHLETES.forEach((name,ni)=>{
+      let hits=0,total=0;
+      sessions.forEach(s=>{ if(s.fullouts) s.fullouts.forEach(fo=>{ total++; if(fo[key]&&fo[key][name]) hits++; }); });
+      const pct=total>0?Math.round((hits/total)*100):null;
+      html+='<div class="totals-row"><span style="font-size:12px;font-weight:500">'+aLabel(name)+'</span>';
+      html+='<span style="font-size:12px;color:var(--stone)">'+hits+'</span>';
+      html+='<span style="font-size:12px;color:var(--stone)">'+total+'</span>';
+      html+='<div class="hit-bar-wrap"><div class="hit-bar" style="width:'+(pct||0)+'%"></div></div>';
+      html+='<span style="font-size:11px;font-weight:700;text-align:right">'+(pct!==null?pct+'%':'--')+'</span></div>';
+    });
+    html+='</div></div>';
+  });
 
-    <div class="analytics-title" style="margin-top:20px">2nd stunt performance</div>
-    <div class="analytics-sub">attempts & hit % per lesson</div>
-    ${renderStuntPerLesson(sorted,"stunt2")}
+  // ── PYRAMID HIT RATE ──
+  html+='<div class="analytics-title" style="margin-top:20px">pyramid hit rate</div>';
+  html+='<div class="analytics-sub">across all fullouts</div>';
+  let pyHits=0,pyTotal=0;
+  sessions.forEach(s=>{ if(s.fullouts) s.fullouts.forEach(fo=>{ pyTotal++; if(fo.pyramidHit) pyHits++; }); });
+  if(pyTotal>0){
+    const pyPct=Math.round((pyHits/pyTotal)*100);
+    html+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:16px;margin-bottom:20px">';
+    html+='<div style="flex:1"><div class="hit-bar-wrap" style="height:8px"><div class="hit-bar" style="width:'+pyPct+'%;background:'+(pyPct>=70?'#4a9d6f':'#9a9a98')+'"></div></div></div>';
+    html+='<span style="font-size:22px;font-weight:700;color:'+(pyPct>=70?'#4a9d6f':'var(--ink)')+'">'+pyPct+'%</span>';
+    html+='<span style="font-size:12px;color:var(--stone)">'+pyHits+'/'+pyTotal+' fullouts</span>';
+    html+='</div>';
+  }
 
-    <div class="analytics-title" style="margin-top:20px">overall stunt totals</div>
-    <div class="analytics-sub">combined across all selected lessons</div>
-    ${renderStuntTotals(filtered,"stunt1","1st Stunt")}
-    ${renderStuntTotals(filtered,"stunt2","2nd Stunt")}
-  `;
+  // ── DEDUCTIONS PER SESSION ──
+  html+='<div class="analytics-title">deductions over time</div>';
+  html+='<div class="analytics-sub">total deduction points per session</div>';
+  if(sessions.length){
+    html+='<div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px">';
+    html+='<div style="display:grid;grid-template-columns:140px 1fr 80px;background:var(--panel);padding:7px 14px;border-bottom:1px solid var(--border)">';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">date</span>';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">breakdown</span>';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:right">total</span>';
+    html+='</div>';
+    sessions.forEach(s=>{
+      const total=s.fullouts?s.fullouts.reduce((sum,fo)=>sum+(fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.points)||0),0):0),0):0;
+      const allDeds=[];
+      if(s.fullouts) s.fullouts.forEach((fo,fi)=>{ if(fo.deductions) fo.deductions.forEach(d=>allDeds.push({fi,label:d.label,pts:d.points,desc:d.desc})); });
+      html+='<div style="border-top:1px solid var(--border);padding:8px 14px">';
+      html+='<div style="display:grid;grid-template-columns:140px 1fr 80px;align-items:start">';
+      html+='<span style="font-size:12px;font-weight:500">'+fmtDateShort(s.date)+'</span>';
+      html+='<div>';
+      if(allDeds.length){
+        allDeds.forEach(d=>{
+          html+='<div style="font-size:11px;color:var(--ink-lt);margin-bottom:2px"><span style="color:var(--red);font-weight:600">-'+parseFloat(d.pts).toFixed(2)+'</span> '+escHtml(d.label)+(d.desc?' <span style="color:var(--stone)">— '+escHtml(d.desc)+'</span>':'')+'</div>';
+        });
+      } else { html+='<span style="font-size:11px;color:var(--stone)">no deductions</span>'; }
+      html+='</div>';
+      html+='<span style="font-size:13px;font-weight:700;color:'+(total>0?'var(--red)':'#4a9d6f')+';text-align:right">'+(total>0?'-'+total.toFixed(2):'clean')+'</span>';
+      html+='</div></div>';
+    });
+    // All-time average
+    const avgDed=sessions.reduce((sum,s)=>{return sum+(s.fullouts?s.fullouts.reduce((a,fo)=>a+(fo.deductions?fo.deductions.reduce((x,d)=>x+(parseFloat(d.points)||0),0):0),0):0);},0)/sessions.length;
+    html+='<div style="border-top:1px solid var(--border);padding:10px 14px;background:var(--panel);display:flex;justify-content:space-between"><span style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">avg per session</span><span style="font-size:13px;font-weight:700;color:var(--red)">-'+avgDed.toFixed(2)+'</span></div>';
+    html+='</div>';
+  }
+
+  // ── DEDUCTION TYPE BREAKDOWN ──
+  html+='<div class="analytics-title">deduction breakdown</div>';
+  html+='<div class="analytics-sub">most common infraction types</div>';
+  const dedCounts={};
+  sessions.forEach(s=>{ if(s.fullouts) s.fullouts.forEach(fo=>{ if(fo.deductions) fo.deductions.forEach(d=>{ dedCounts[d.label]=(dedCounts[d.label]||{count:0,pts:0}); dedCounts[d.label].count++; dedCounts[d.label].pts+=parseFloat(d.points)||0; }); }); });
+  const dedEntries=Object.entries(dedCounts).sort((a,b)=>b[1].count-a[1].count);
+  if(dedEntries.length){
+    html+='<div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px">';
+    html+='<div style="display:grid;grid-template-columns:1fr 60px 80px;background:var(--panel);padding:7px 14px;border-bottom:1px solid var(--border)">';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">infraction</span>';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:center">count</span>';
+    html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:right">total pts</span>';
+    html+='</div>';
+    dedEntries.forEach(([label,data],i)=>{
+      html+='<div style="display:grid;grid-template-columns:1fr 60px 80px;align-items:center;padding:8px 14px;border-top:1px solid var(--border);background:'+(i%2===0?'var(--surface)':'transparent')+'">';
+      html+='<span style="font-size:12px;font-weight:500">'+escHtml(label)+'</span>';
+      html+='<span style="font-size:12px;color:var(--stone);text-align:center">'+data.count+'x</span>';
+      html+='<span style="font-size:12px;font-weight:700;color:var(--red);text-align:right">-'+data.pts.toFixed(2)+'</span>';
+      html+='</div>';
+    });
+    html+='</div>';
+  } else { html+='<div class="no-data">No deductions recorded yet.</div>'; }
+
+  return html;
 }
 
 function setAnalyticsLesson(val){analyticsLesson=val;renderAnalytics();}
 
 function renderAttTable(sorted){
   if(!sorted.length)return'<div class="no-data">No data yet.</div>';
-  return`<div class="att-table">
-    <div class="att-hd"><span>athlete</span><span>lessons</span><span>sessions</span><span>rate</span></div>
-    ${ATHLETES.map(name=>{
-      const present=sorted.filter(p=>p.attendance&&p.attendance[name]).length;
-      const pct=sorted.length?Math.round((present/sorted.length)*100):0;
-      const dots=sorted.map(p=>`<div class="att-dot" style="background:${p.attendance&&p.attendance[name]?"#1a1a1a":"#d8d7d5"}" title="${fmtDateShort(p.date)}"></div>`).join("");
-      return`<div class="att-row">
-        <span style="font-size:12px;font-weight:500">${name}</span>
-        <div class="att-dots">${dots}</div>
-        <span style="font-size:11px;color:var(--stone);text-align:right">${present}/${sorted.length}</span>
-        <span style="font-size:12px;font-weight:600;text-align:right">${pct}%</span>
-      </div>`;
-    }).join("")}
-  </div>`;
+  return'<div class="att-table"><div class="att-hd"><span>athlete</span><span>lessons</span><span>sessions</span><span>rate</span></div>'+ATHLETES.map(name=>{
+    const present=sorted.filter(p=>p.attendance&&p.attendance[name]).length;
+    const pct=sorted.length?Math.round((present/sorted.length)*100):0;
+    const dots=sorted.map(p=>'<div class="att-dot" style="background:'+(p.attendance&&p.attendance[name]?"#1a1a1a":"#d8d7d5")+'" title="'+fmtDateShort(p.date)+'"></div>').join("");
+    return'<div class="att-row"><span style="font-size:12px;font-weight:500">'+aLabel(name)+'</span><div class="att-dots">'+dots+'</div><span style="font-size:11px;color:var(--stone);text-align:right">'+present+"/"+sorted.length+'</span><span style="font-size:12px;font-weight:600;text-align:right">'+pct+'%</span></div>';
+  }).join("")+'</div>';
 }
 
 function renderStuntPerLesson(sorted,stuntId){
@@ -466,63 +620,33 @@ function renderStuntPerLesson(sorted,stuntId){
     const t=TEMPLATES[plan.templateId]||{};
     const sec=plan.sections.find(s=>s.categoryId===stuntId);
     if(!sec||!sec.stuntData)return"";
-    return`<div class="stunt-block">
-      <div class="stunt-block-hd">
-        <span style="font-family:'DM Serif Display',serif;font-size:14px;font-style:italic">${fmtDateShort(plan.date)}</span>
-        <span style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">${t.display||""}</span>
-      </div>
-      <div class="stunt-hd-row"><span>athlete</span><span>att.</span><span>hits</span><span>rate</span><span>%</span></div>
-      ${ATHLETES.map(name=>{
-        const d=sec.stuntData[name]||{};
-        const att=parseInt(d.attempts)||0;
-        const hits=parseInt(d.hits)||0;
-        const pct=att>0?Math.round((hits/att)*100):null;
-        return`<div class="stunt-ath-row">
-          <span style="font-size:12px;font-weight:500">${name}</span>
-          <span style="font-size:12px;color:var(--stone)">${att||"—"}</span>
-          <span style="font-size:12px;color:var(--stone)">${hits||"—"}</span>
-          <div class="hit-bar-wrap"><div class="hit-bar" style="width:${pct||0}%"></div></div>
-          <span style="font-size:11px;font-weight:700;text-align:right">${pct!==null?pct+"%":"—"}</span>
-        </div>`;
-      }).join("")}
-    </div>`;
+    return'<div class="stunt-block"><div class="stunt-block-hd"><span style="font-family:\'DM Serif Display\',serif;font-size:14px;font-style:italic">'+fmtDateShort(plan.date)+'</span><span style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">'+(t.display||"")+'</span></div><div class="stunt-hd-row"><span>athlete</span><span>att.</span><span>hits</span><span>rate</span><span>%</span></div>'+ATHLETES.map(name=>{
+      const d=sec.stuntData[name]||{};
+      const att=parseInt(d.attempts)||0;
+      const hits=parseInt(d.hits)||0;
+      const pct=att>0?Math.round((hits/att)*100):null;
+      return'<div class="stunt-ath-row"><span style="font-size:12px;font-weight:500">'+aLabel(name)+'</span><span style="font-size:12px;color:var(--stone)">'+(att||"--")+'</span><span style="font-size:12px;color:var(--stone)">'+(hits||"--")+'</span><div class="hit-bar-wrap"><div class="hit-bar" style="width:'+(pct||0)+'%"></div></div><span style="font-size:11px;font-weight:700;text-align:right">'+(pct!==null?pct+"%":"--")+'</span></div>';
+    }).join("")+'</div>';
   }).join("");
 }
 
 function renderStuntTotals(plans,stuntId,label){
   const rp=plans.filter(p=>p.sections&&p.sections.some(s=>s.categoryId===stuntId));
-  if(!rp.length)return`<div class="no-data">${label}: no data yet.</div>`;
-  return`<div class="totals-card">
-    <div style="padding:10px 14px;background:var(--ink);color:var(--surface);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase">${label}</div>
-    <div class="totals-hd"><span>athlete</span><span>total att.</span><span>total hits</span><span>rate</span><span>%</span></div>
-    ${ATHLETES.map(name=>{
-      let ta=0,th=0;
-      rp.forEach(plan=>{const sec=plan.sections.find(s=>s.categoryId===stuntId);if(sec&&sec.stuntData&&sec.stuntData[name]){ta+=parseInt(sec.stuntData[name].attempts)||0;th+=parseInt(sec.stuntData[name].hits)||0;}});
-      const pct=ta>0?Math.round((th/ta)*100):null;
-      return`<div class="totals-row">
-        <span style="font-size:12px;font-weight:500">${name}</span>
-        <span style="font-size:12px;color:var(--stone)">${ta||"—"}</span>
-        <span style="font-size:12px;color:var(--stone)">${th||"—"}</span>
-        <div class="hit-bar-wrap"><div class="hit-bar" style="width:${pct||0}%"></div></div>
-        <span style="font-size:11px;font-weight:700;text-align:right">${pct!==null?pct+"%":"—"}</span>
-      </div>`;
-    }).join("")}
-  </div>`;
+  if(!rp.length)return'<div class="no-data">'+label+': no data yet.</div>';
+  return'<div class="totals-card"><div style="padding:10px 14px;background:var(--ink);color:var(--surface);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase">'+label+'</div><div class="totals-hd"><span>athlete</span><span>total att.</span><span>total hits</span><span>rate</span><span>%</span></div>'+ATHLETES.map(name=>{
+    let ta=0,th=0;
+    rp.forEach(plan=>{const sec=plan.sections.find(s=>s.categoryId===stuntId);if(sec&&sec.stuntData&&sec.stuntData[name]){ta+=parseInt(sec.stuntData[name].attempts)||0;th+=parseInt(sec.stuntData[name].hits)||0;}});
+    const pct=ta>0?Math.round((th/ta)*100):null;
+    return'<div class="totals-row"><span style="font-size:12px;font-weight:500">'+aLabel(name)+'</span><span style="font-size:12px;color:var(--stone)">'+(ta||"--")+'</span><span style="font-size:12px;color:var(--stone)">'+(th||"--")+'</span><div class="hit-bar-wrap"><div class="hit-bar" style="width:'+(pct||0)+'%"></div></div><span style="font-size:11px;font-weight:700;text-align:right">'+(pct!==null?pct+"%":"--")+'</span></div>';
+  }).join("")+'</div>';
 }
 
-/* ═══ BUILDER ═══ */
+/* BUILDER */
 function startBuilder(templateId,existingPlan){
   currentTemplateId=templateId;
   const t=TEMPLATES[templateId];
-  if(existingPlan){
-    currentPlanId=existingPlan.id;
-    sections=JSON.parse(JSON.stringify(existingPlan.sections||[]));
-    document.getElementById("b-date").value=existingPlan.date||"";
-  }else{
-    currentPlanId=uid();
-    sections=[];
-    document.getElementById("b-date").value=nextWeekday(templateId==="monday"?1:3);
-  }
+  if(existingPlan){currentPlanId=existingPlan.id;sections=JSON.parse(JSON.stringify(existingPlan.sections||[]));document.getElementById("b-date").value=existingPlan.date||"";}
+  else{currentPlanId=uid();sections=[];document.getElementById("b-date").value=nextWeekday(templateId==="monday"?1:3);}
   pickedCat=null;
   document.getElementById("b-title").textContent=templateId+"\nclass plan";
   document.getElementById("b-time").textContent=t.time;
@@ -551,10 +675,7 @@ function updateTimebar(){
 }
 
 function renderCatGrid(){
-  document.getElementById("cat-grid").innerHTML=CATEGORIES.map(c=>
-    `<div class="cat-chip${pickedCat===c.id?" sel":""}" onclick="pickCat('${c.id}')">
-      <span class="cat-ic">${c.icon}</span><span>${c.label}</span>
-    </div>`).join("");
+  document.getElementById("cat-grid").innerHTML=CATEGORIES.map(c=>'<div class="cat-chip'+(pickedCat===c.id?" sel":"")+ '" onclick="pickCat(\''+c.id+'\')"><span class="cat-ic">'+c.icon+'</span><span>'+c.label+'</span></div>').join("");
   document.getElementById("add-sec-btn").disabled=!pickedCat;
 }
 function pickCat(id){pickedCat=(pickedCat===id)?null:id;renderCatGrid();}
@@ -579,90 +700,54 @@ function renderBuilderSections(){
   wrap.style.display="flex";
   list.innerHTML=sections.map((s,i)=>{
     const cat=CATEGORIES.find(c=>c.id===s.categoryId)||{};
-    return`<div class="bsec">
-      <div class="bsec-top">
-        <div class="bsec-left">
-          <span class="bsec-num">${String(i+1).padStart(2,"0")}</span>
-          <span class="cat-ic">${cat.icon||""}</span>
-          <span class="bsec-lbl">${cat.label||""}</span>
-        </div>
-        <div class="bsec-actions">
-          <button class="ic-btn" onclick="moveSection(${i},-1)"${i===0?" disabled":""}>▲</button>
-          <button class="ic-btn" onclick="moveSection(${i},1)"${i===sections.length-1?" disabled":""}>▼</button>
-          <button class="ic-btn danger" onclick="removeSection('${s.id}')">✕</button>
-        </div>
-      </div>
-      <div class="field-block">
-        <span class="lbl-xs">duration</span>
-        <div class="tchips">${TIMES.map(t=>`<button class="tchip${s.duration===t?" sel":""}" onclick="setSectionDuration('${s.id}',${t})">${t}m</button>`).join("")}</div>
-      </div>
-      <div class="field-block">
-        <span class="lbl-xs">breakdown / details</span>
-        <textarea class="ta" rows="2" placeholder="focus points, sequences..." oninput="setSectionDetails('${s.id}',this.value)">${escHtml(s.details||"")}</textarea>
-      </div>
-    </div>`;
+    return'<div class="bsec"><div class="bsec-top"><div class="bsec-left"><span class="bsec-num">'+String(i+1).padStart(2,"0")+'</span><span class="cat-ic">'+cat.icon+'</span><span class="bsec-lbl">'+cat.label+'</span></div><div class="bsec-actions"><button class="ic-btn" onclick="moveSection('+i+',-1)"'+(i===0?" disabled":"")+'>&uarr;</button><button class="ic-btn" onclick="moveSection('+i+',1)"'+(i===sections.length-1?" disabled":"")+'>&darr;</button><button class="ic-btn danger" onclick="removeSection(\''+s.id+'\')">x</button></div></div><div class="field-block"><span class="lbl-xs">duration</span><div class="tchips">'+TIMES.map(t=>'<button class="tchip'+(s.duration===t?" sel":"")+ '" onclick="setSectionDuration(\''+s.id+'\','+t+')">'+t+'m</button>').join("")+'</div></div><div class="field-block"><span class="lbl-xs">breakdown / details</span><textarea class="ta" rows="2" placeholder="focus points, sequences..." oninput="setSectionDetails(\''+s.id+'\',this.value)">'+escHtml(s.details||"")+'</textarea></div></div>';
   }).join("");
 }
 
 function buildPlanObj(){
-  return{
-    id:currentPlanId,
-    templateId:currentTemplateId,
-    date:document.getElementById("b-date").value,
-    sections:JSON.parse(JSON.stringify(sections)),
-    attendance:getPlan(currentPlanId)?.attendance||{},
-  };
+  return{id:currentPlanId,templateId:currentTemplateId,date:document.getElementById("b-date").value,sections:JSON.parse(JSON.stringify(sections)),attendance:getPlan(currentPlanId)?.attendance||{}};
 }
 
 async function autoSave(){
   const plan=buildPlanObj();
   setSyncDot("builder","busy","saving...");
   try{await dbSave(plan);setSyncDot("builder","ok","saved");}
-  catch(e){console.error(e);setSyncDot("builder","err","save failed");}
+  catch(e){setSyncDot("builder","err","save failed");}
 }
 
 async function savePlan(){
   const plan=buildPlanObj();
   setSyncDot("builder","busy","saving...");
-  try{
-    await dbSave(plan);
-    setSyncDot("builder","ok","saved");
-    openPlan(plan.id);
-  }catch(e){console.error(e);setSyncDot("builder","err","save failed");}
+  try{await dbSave(plan);setSyncDot("builder","ok","saved");openPlan(plan.id);}
+  catch(e){setSyncDot("builder","err","save failed");}
 }
 
-/* ═══ PLAN VIEW ═══ */
+/* PLAN VIEW */
 function openPlan(id){
-  // get freshest from cache
   const plan=getPlan(id)||plansCache.find(p=>p.id===id);
   if(!plan)return;
   currentPlanId=id;
   const t=TEMPLATES[plan.templateId]||{};
-  document.getElementById("p-title").textContent=`${(t.display||"").toLowerCase()}\nclass plan`;
+  document.getElementById("p-title").textContent=(t.display||"").toLowerCase()+"\nclass plan";
   document.getElementById("p-time").textContent=t.time||"";
   document.getElementById("p-date").textContent=plan.date?fmtDate(plan.date):"";
   const total=plan.sections.reduce((s,x)=>s+(parseInt(x.duration)||0),0);
-  document.getElementById("p-dur").textContent=`${total} min · ${t.duration} min total`;
+  document.getElementById("p-dur").textContent=total+" min - "+t.duration+" min total";
   setSyncDot("plan","ok","");
-  renderAttendance(plan);
-  renderPlanSections(plan);
+  renderAttendance(plan);renderPlanSections(plan);
   showScreen("plan");
 }
 
 function renderAttendance(plan){
   document.getElementById("attend-list").innerHTML=ATHLETES.map(name=>{
     const on=!!(plan.attendance&&plan.attendance[name]);
-    return`<div class="attend-item${on?" on":""}" onclick="toggleAttend('${name}')">
-      <span class="tick">${on?"✓":""}</span>
-      <span class="aname">${name}</span>
-    </div>`;
+    return'<div class="attend-item'+(on?" on":"")+ '" onclick="toggleAttend(\''+name+'\')"><span class="tick">'+(on?"v":"")+'</span><span class="aname">'+aLabel(name)+'</span></div>';
   }).join("");
 }
 
 async function toggleAttend(name){
   const plan=getPlan(currentPlanId);if(!plan)return;
-  plan.attendance=plan.attendance||{};
-  plan.attendance[name]=!plan.attendance[name];
+  plan.attendance=plan.attendance||{};plan.attendance[name]=!plan.attendance[name];
   setSyncDot("plan","busy","saving...");
   try{await dbSave(plan);setSyncDot("plan","ok","saved");}
   catch{setSyncDot("plan","err","save failed");}
@@ -672,37 +757,19 @@ async function toggleAttend(name){
 function renderPlanSections(plan){
   document.getElementById("plan-sections").innerHTML=plan.sections.map((sec,i)=>{
     const cat=CATEGORIES.find(c=>c.id===sec.categoryId)||{};
-    let html=`<div class="plan-block">
-      <div class="plan-block-hd">
-        <div class="blk-left">
-          <span class="blk-num">${String(i+1).padStart(2,"0")}</span>
-          <span class="cat-ic" style="font-size:11px;color:var(--putty)">${cat.icon||""}</span>
-          <span class="blk-title">${cat.label||""}</span>
-        </div>
-        <span class="dur-tag">${sec.duration} min</span>
-      </div>
-      <div class="plan-block-body">`;
-    if(sec.details)html+=`<div class="plan-field"><div class="plan-field-lbl">breakdown</div><div class="detail-text">${escHtml(sec.details)}</div></div>`;
+    let html='<div class="plan-block"><div class="plan-block-hd"><div class="blk-left"><span class="blk-num">'+String(i+1).padStart(2,"0")+'</span><span class="cat-ic" style="font-size:11px;color:var(--putty)">'+cat.icon+'</span><span class="blk-title">'+cat.label+'</span></div><span class="dur-tag">'+sec.duration+' min</span></div><div class="plan-block-body">';
+    if(sec.details)html+='<div class="plan-field"><div class="plan-field-lbl">breakdown</div><div class="detail-text">'+escHtml(sec.details)+'</div></div>';
     if(cat.stunt){
-      html+=`<div class="plan-field"><div class="plan-field-lbl">stunt tracking</div>
-        <div class="stunt-tbl">
-          <div class="stunt-tbl-hd"><span>athlete</span><span>attempts</span><span>hits</span></div>
-          ${ATHLETES.map(name=>`<div class="stunt-tbl-row">
-            <span class="sname">${name}</span>
-            <input type="number" min="0" class="stunt-inp" placeholder="—"
-              value="${escHtml(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].attempts||"":""))}"
-              oninput="updateStunt('${sec.id}','${name}','attempts',this.value)"/>
-            <input type="number" min="0" class="stunt-inp" placeholder="—"
-              value="${escHtml(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].hits||"":""))}"
-              oninput="updateStunt('${sec.id}','${name}','hits',this.value)"/>
-          </div>`).join("")}
-        </div></div>`;
+      html+='<div class="plan-field"><div class="plan-field-lbl">stunt tracking</div><div class="stunt-tbl"><div class="stunt-tbl-hd"><span>group</span><span>attempts</span><span>hits</span></div>'+ATHLETES.map(name=>'<div class="stunt-tbl-row"><span class="sname">'+aLabel(name)+'</span><input type="number" min="0" class="stunt-inp" placeholder="--" value="'+escHtml(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].attempts||"":""))+'" oninput="updateStunt(\''+sec.id+'\',\''+name+'\',\'attempts\',this.value)"/><input type="number" min="0" class="stunt-inp" placeholder="--" value="'+escHtml(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].hits||"":""))+'" oninput="updateStunt(\''+sec.id+'\',\''+name+'\',\'hits\',this.value)"/></div>').join("")+'</div></div>';
     }
-    html+=`<div class="plan-field"><div class="plan-field-lbl">comments</div>
-      <textarea class="plan-ta" rows="2" placeholder="notes from practice..." oninput="updateComment('${sec.id}',this.value)">${escHtml(sec.comments||"")}</textarea>
-      </div></div></div>`;
+    if(cat.id==="fullout"){
+      html+='<div class="plan-field"><div class="plan-field-lbl">fullout notes</div><textarea class="plan-ta" rows="2" placeholder="general notes..." oninput="updateComment(\''+sec.id+'\',this.value)">'+escHtml(sec.comments||"")+'</textarea></div>';
+    } else {
+      html+='<div class="plan-field"><div class="plan-field-lbl">comments</div><textarea class="plan-ta" rows="2" placeholder="notes from practice..." oninput="updateComment(\''+sec.id+'\',this.value)">'+escHtml(sec.comments||"")+'</textarea></div>';
+    }
+    html+='</div></div>';
     return html;
-  }).join("")+`<div class="end-mark">— end of plan —</div>`;
+  }).join("")+'<div class="end-mark">-- end of plan --</div>';
 }
 
 function scheduleCloudSave(){
@@ -715,22 +782,231 @@ function scheduleCloudSave(){
   },1200);
 }
 
-function updateComment(secId,val){
-  const plan=getPlan(currentPlanId);if(!plan)return;
-  const s=plan.sections.find(s=>s.id===secId);if(s)s.comments=val;
-  scheduleCloudSave();
-}
+function updateComment(secId,val){const plan=getPlan(currentPlanId);if(!plan)return;const s=plan.sections.find(s=>s.id===secId);if(s)s.comments=val;scheduleCloudSave();}
 function updateStunt(secId,name,field,val){
   const plan=getPlan(currentPlanId);if(!plan)return;
   const s=plan.sections.find(s=>s.id===secId);if(!s)return;
-  s.stuntData=s.stuntData||{};
-  s.stuntData[name]=s.stuntData[name]||{attempts:"",hits:""};
-  s.stuntData[name][field]=val;
+  s.stuntData=s.stuntData||{};s.stuntData[name]=s.stuntData[name]||{attempts:"",hits:""};s.stuntData[name][field]=val;
   scheduleCloudSave();
 }
 function editPlan(){const plan=getPlan(currentPlanId);if(!plan)return;startBuilder(plan.templateId,plan);}
 
-/* ─── INIT ─── */
+/* FULLOUTS */
+function goFullouts(){
+  showScreen("fullouts");
+  renderFoSessionList();
+}
+
+function renderFoSessionList(){
+  const list=document.getElementById("fo-session-list");
+  if(!foCache.length){list.innerHTML='<div style="font-size:11px;color:#444;font-style:italic;padding:8px 0">No sessions yet.</div>';return;}
+  list.innerHTML=foCache.map(s=>'<div class="fo-session-row'+(s.id===currentFoSessionId?" active":"")+ '" onclick="openFoSession(\''+s.id+'\')"><div class="fo-session-date">'+(s.date?fmtDateShort(s.date):"no date")+'</div><div class="fo-session-count">'+(s.fullouts?s.fullouts.length:0)+' fullout'+(s.fullouts&&s.fullouts.length!==1?"s":"")+'</div></div>').join("");
+}
+
+async function addFulloutSession(){
+  const session={id:uid(),date:new Date().toISOString().split("T")[0],issues:"",fullouts:[]};
+  setSyncDot("fo","busy","saving...");
+  try{await foSave(session);setSyncDot("fo","ok","saved");openFoSession(session.id);}
+  catch{setSyncDot("fo","err","save failed");}
+}
+
+function openFoSession(id){
+  currentFoSessionId=id;
+  renderFoSessionList();
+  renderFoRight();
+}
+
+function renderFoRight(){
+  const session=getFoSession(currentFoSessionId);
+  if(!session){document.getElementById("fo-right").innerHTML='<div class="no-session-msg">Select a session or create a new one.</div>';return;}
+  const totalDed=session.fullouts?session.fullouts.reduce((sum,fo)=>{return sum+(fo.deductions?fo.deductions.reduce((s,d)=>s+(parseFloat(d.points)||0),0):0);},0):0;
+
+  let html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">';
+  html+='<div><h2 style="font-family:\'DM Serif Display\',serif;font-size:26px;font-style:italic">fullout session</h2></div>';
+  html+='<button class="del-btn" style="font-size:12px" onclick="deleteFoSession()">delete session</button></div>';
+
+  // Date
+  html+='<div class="fo-card"><div class="fo-card-hd"><span class="fo-card-title">session details</span></div><div class="fo-card-body">';
+  html+='<div class="fo-field"><div class="fo-lbl">fullout date</div><input type="date" class="fo-inp" value="'+escHtml(session.date||"")+'" oninput="updateFoField(\'date\',this.value)"/></div>';
+  html+='<div class="fo-field"><div class="fo-lbl">general issues / notes</div><textarea class="fo-ta" rows="3" placeholder="overall routine issues, things to work on..." oninput="updateFoField(\'issues\',this.value)">'+escHtml(session.issues||"")+'</textarea></div>';
+  html+='</div></div>';
+
+  // Fullouts
+  if(session.fullouts){
+    session.fullouts.forEach((fo,fi)=>{
+      const foDed=fo.deductions?fo.deductions.reduce((s,d)=>s+(parseFloat(d.points)||0),0):0;
+      html+='<div class="fo-card"><div class="fo-card-hd">';
+      html+='<span class="fo-card-title">fullout '+String(fi+1).padStart(2,"0")+'</span>';
+      html+='<button class="del-btn" onclick="removeFullout('+fi+')">remove</button></div>';
+      html+='<div class="fo-card-body">';
+
+      // ── SIDE BY SIDE: left=deductions, right=stunt hits
+      html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">';
+
+      // LEFT: Deductions
+      html+='<div>';
+      html+='<div class="fo-lbl" style="margin-bottom:6px">deductions</div>';
+      if(fo.deductions&&fo.deductions.length){
+        html+='<div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px">';
+        fo.deductions.forEach((d,di)=>{
+          html+='<div style="display:flex;flex-direction:column;gap:4px;padding:8px 10px;border-bottom:1px solid var(--border)">';
+          html+='<div style="display:flex;align-items:center;gap:6px">';
+          html+='<div style="flex:0 0 auto;background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--ink-lt);white-space:nowrap">'+escHtml(d.label)+'</div>';
+          html+='<span style="font-size:11px;font-weight:700;color:var(--red)">-'+d.points.toFixed(2)+'</span>';
+          html+='<button class="ded-remove" style="margin-left:auto" onclick="removeDed('+fi+','+di+')">x</button>';
+          html+='</div>';
+          html+='<input placeholder="e.g. Georgia - half up fell" style="width:100%;padding:5px 8px;background:var(--panel);border:1px solid var(--border);border-radius:5px;font-family:\'DM Sans\',sans-serif;font-size:11px;color:var(--ink);outline:none" value="'+escHtml(d.desc||"")+'" oninput="updateDedDesc('+fi+','+di+',this.value)"/>';
+          html+='</div>';
+        });
+        html+='<div class="deductions-total"><span class="deductions-total-lbl">total</span><span class="deductions-total-val">-'+foDed.toFixed(2)+'</span></div>';
+        html+='</div>';
+      }
+      html+='<div style="position:relative" id="ded-drop-wrap-'+fi+'"><button class="add-ded-btn" onclick="toggleDedDropdown('+fi+')">+ add deduction</button>';
+      html+='<div class="ded-type-menu" id="ded-menu-'+fi+'" style="display:none">';
+      DEDUCTION_TYPES.forEach(cat=>{
+        html+='<div class="ded-type-menu-hd">'+cat.category+'</div>';
+        cat.items.forEach(item=>{
+          html+='<div class="ded-type-option" onclick="addDeduction('+fi+',\''+escHtml(item.label)+'\','+item.points+')"><span>'+escHtml(item.label)+'</span><span class="opt-pts">-'+item.points.toFixed(2)+'</span></div>';
+        });
+      });
+      html+='</div></div>';
+      html+='</div>';
+
+      // RIGHT: Stunt hits table + pyramid
+      const s1hits=fo.stunt1Hits||{};
+      const s2hits=fo.stunt2Hits||{};
+      const pyHit=!!(fo.pyramidHit);
+      html+='<div>';
+      html+='<div class="fo-lbl" style="margin-bottom:6px">stunt group hits</div>';
+      html+='<div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">';
+      html+='<div style="display:grid;grid-template-columns:1fr 44px 44px;background:var(--panel);padding:6px 10px;border-bottom:1px solid var(--border)">';
+      html+='<span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">group</span>';
+      html+='<span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st1</span>';
+      html+='<span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st2</span>';
+      html+='</div>';
+      ATHLETES.forEach(name=>{
+        const on1=!!(s1hits[name]);
+        const on2=!!(s2hits[name]);
+        html+='<div style="display:grid;grid-template-columns:1fr 44px 44px;align-items:center;padding:5px 10px;border-top:1px solid var(--border)">';
+        html+='<span style="font-size:11px;font-weight:500;color:var(--ink)">'+aLabel(name)+'</span>';
+        html+='<div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleStuntHit('+fi+',\'stunt1Hits\',\''+name+'\')"><div style="width:20px;height:20px;border:1.5px solid '+(on1?'#4a9d6f':'var(--border)')+';border-radius:4px;display:flex;align-items:center;justify-content:center;background:'+(on1?'#4a9d6f':'transparent')+'"><span style="color:white;font-size:10px;font-weight:700">'+(on1?'v':'')+'</span></div></div>';
+        html+='<div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleStuntHit('+fi+',\'stunt2Hits\',\''+name+'\')"><div style="width:20px;height:20px;border:1.5px solid '+(on2?'#4a9d6f':'var(--border)')+';border-radius:4px;display:flex;align-items:center;justify-content:center;background:'+(on2?'#4a9d6f':'transparent')+'"><span style="color:white;font-size:10px;font-weight:700">'+(on2?'v':'')+'</span></div></div>';
+        html+='</div>';
+      });
+      html+='</div>';
+      html+='<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid '+(pyHit?'#4a9d6f':'var(--border)')+';border-radius:7px;cursor:pointer;background:'+(pyHit?'#f0faf5':'transparent')+';margin-top:8px" onclick="togglePyramidHit('+fi+')">';
+      html+='<div style="width:20px;height:20px;border:1.5px solid '+(pyHit?'#4a9d6f':'var(--border)')+';border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:'+(pyHit?'#4a9d6f':'transparent')+'"><span style="color:white;font-size:10px;font-weight:700">'+(pyHit?'v':'')+'</span></div>';
+      html+='<span style="font-size:12px;font-weight:'+(pyHit?'600':'400')+';color:'+(pyHit?'#2d7a52':'var(--stone)')+'">pyramid hit</span></div>';
+      html+='</div>';
+      html+='</div>'; // end side-by-side
+
+      // Video link
+      html+='<div class="fo-field" style="margin-top:4px"><div class="fo-lbl">video link</div>';
+      if(fo.videoUrl){html+='<div class="fo-video-link"><input class="fo-inp" value="'+escHtml(fo.videoUrl)+'" oninput="updateFoVideo('+fi+',this.value)" placeholder="Paste YouTube or Drive link..."/><a href="'+escHtml(fo.videoUrl)+'" target="_blank">open</a></div>';}
+      else{html+='<input class="fo-inp" value="" oninput="updateFoVideo('+fi+',this.value)" placeholder="Paste YouTube, Drive or iCloud link..."/>';}
+      html+='</div>';
+
+      html+='</div></div>';
+    });
+  }
+
+  html+='<button class="add-fo-btn" style="background:var(--panel);color:var(--ink);border-color:var(--border);margin-top:4px" onclick="addFullout()">+ add fullout</button>';
+
+  if(totalDed>0){
+    html+='<div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone)">session total deductions</span><span style="font-size:20px;font-weight:700;color:var(--red)">-'+totalDed.toFixed(2)+'</span></div>';
+  }
+
+  document.getElementById("fo-right").innerHTML=html;
+}
+
+function toggleDedDropdown(fi){
+  const menu=document.getElementById("ded-menu-"+fi);
+  const wrap=document.getElementById("ded-drop-wrap-"+fi);
+  if(!menu)return;
+  const isOpen=menu.style.display!=="none";
+  // close any open
+  document.querySelectorAll(".ded-type-menu").forEach(m=>m.style.display="none");
+  activeDedDropdown=null;
+  if(!isOpen){menu.style.display="block";activeDedDropdown=wrap;}
+}
+
+async function updateFoField(field,val){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session[field]=val;
+  await foSave(session);
+}
+
+async function updateFoVideo(fi,val){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi].videoUrl=val;
+  await foSave(session);
+}
+
+async function updateDedDesc(fi,di,val){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi].deductions[di].desc=val;
+  await foSave(session);
+}
+
+async function addFullout(){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts=session.fullouts||[];
+  const stunt1Hits=Object.fromEntries(ATHLETES.map(n=>[n,false]));
+  const stunt2Hits=Object.fromEntries(ATHLETES.map(n=>[n,false]));
+  session.fullouts.push({id:uid(),deductions:[],videoUrl:"",stunt1Hits,stunt2Hits,pyramidHit:false});
+  setSyncDot("fo","busy","saving...");
+  try{await foSave(session);setSyncDot("fo","ok","saved");renderFoRight();}
+  catch{setSyncDot("fo","err","save failed");}
+}
+
+async function removeFullout(fi){
+  if(!confirm("Remove this fullout?"))return;
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts.splice(fi,1);
+  await foSave(session);renderFoRight();
+}
+
+async function addDeduction(fi,label,points){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi].deductions=session.fullouts[fi].deductions||[];
+  session.fullouts[fi].deductions.push({label,points,desc:""});
+  document.querySelectorAll(".ded-type-menu").forEach(m=>m.style.display="none");
+  activeDedDropdown=null;
+  setSyncDot("fo","busy","saving...");
+  try{await foSave(session);setSyncDot("fo","ok","saved");renderFoRight();}
+  catch{setSyncDot("fo","err","save failed");}
+}
+
+async function removeDed(fi,di){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi].deductions.splice(di,1);
+  await foSave(session);renderFoRight();
+}
+
+async function deleteFoSession(){
+  if(!confirm("Delete this fullout session?"))return;
+  await foDelete(currentFoSessionId);
+  currentFoSessionId=null;
+  document.getElementById("fo-right").innerHTML='<div class="no-session-msg">Session deleted. Create a new one or select another.</div>';
+}
+
+async function toggleStuntHit(fi,field,name){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi][field]=session.fullouts[fi][field]||{};
+  session.fullouts[fi][field][name]=!session.fullouts[fi][field][name];
+  setSyncDot("fo","busy","saving...");
+  try{await foSave(session);setSyncDot("fo","ok","saved");renderFoRight();}
+  catch{setSyncDot("fo","err","save failed");}
+}
+
+async function togglePyramidHit(fi){
+  const session=getFoSession(currentFoSessionId);if(!session)return;
+  session.fullouts[fi].pyramidHit=!session.fullouts[fi].pyramidHit;
+  setSyncDot("fo","busy","saving...");
+  try{await foSave(session);setSyncDot("fo","ok","saved");renderFoRight();}
+  catch{setSyncDot("fo","err","save failed");}
+}
+
 startLiveSync();
 </script>
 </body>
