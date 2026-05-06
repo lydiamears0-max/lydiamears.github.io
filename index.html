@@ -599,12 +599,16 @@ function renderFoA(){
   html+=`<div class="analytics-title">stunt group hit rates</div><div class="analytics-sub">across ${totalFo} fullouts — coloured by hit rate</div>`;
   if(totalFo){
     function foHitRow(name){
-      let s1h=0,s2h=0;
-      sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{if(fo.stunt1Hits&&fo.stunt1Hits[name])s1h++;if(fo.stunt2Hits&&fo.stunt2Hits[name])s2h++;});});
-      const p1=Math.round((s1h/totalFo)*100),p2=Math.round((s2h/totalFo)*100);
-      const cH=s1h+s2h,cT=totalFo*2,pC=Math.round((cH/cT)*100);
-      function bc(h,t,p){return`<td style="padding:6px 8px;text-align:center;font-size:11px">${h}/${t}</td><td style="padding:6px 8px;min-width:80px"><div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap"><div class="pct-bar" style="width:${p}%;background:${pctCol(p)}"></div></div><span style="font-size:10px;font-weight:700;color:${pctCol(p)}">${p}%</span></div></td>`;}
-      return`<tr style="border-top:1px solid var(--border)"><td style="padding:6px 10px;font-size:11px;font-weight:500">${aL(name)}</td>${bc(s1h,totalFo,p1)}${bc(s2h,totalFo,p2)}${bc(cH,cT,pC)}</tr>`;
+      let s1h=0,s1t=0,s2h=0,s2t=0;
+      sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{
+        const abs=fo.absent&&fo.absent[name];
+        if(!abs){s1t++;if(fo.stunt1Hits&&fo.stunt1Hits[name])s1h++;s2t++;if(fo.stunt2Hits&&fo.stunt2Hits[name])s2h++;}
+      });});
+      const p1=s1t>0?Math.round((s1h/s1t)*100):null;
+      const p2=s2t>0?Math.round((s2h/s2t)*100):null;
+      const cH=s1h+s2h,cT=s1t+s2t,pC=cT>0?Math.round((cH/cT)*100):null;
+      function bc(h,t,p){if(p===null)return`<td style="padding:6px 8px;text-align:center;font-size:11px;color:var(--stone)">--</td><td style="padding:6px 8px"><span style="font-size:10px;color:var(--stone)">n/a</span></td>`;return`<td style="padding:6px 8px;text-align:center;font-size:11px">${h}/${t}</td><td style="padding:6px 8px;min-width:80px"><div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap"><div class="pct-bar" style="width:${p}%;background:${pctCol(p)}"></div></div><span style="font-size:10px;font-weight:700;color:${pctCol(p)}">${p}%</span></div></td>`;}
+      return`<tr style="border-top:1px solid var(--border)"><td style="padding:6px 10px;font-size:11px;font-weight:500">${aL(name)}</td>${bc(s1h,s1t,p1)}${bc(s2h,s2t,p2)}${bc(cH,cT,pC)}</tr>`;
     }
     html+=`<table style="width:100%;border:1px solid var(--border);border-radius:10px;border-collapse:collapse;overflow:hidden;margin-bottom:18px">
       <thead><tr style="background:var(--ink)"><th style="padding:6px 10px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:white;text-align:left"></th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#2a2a2a">1st stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#1a1a1a">2nd stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#111">combined</th></tr></thead>
@@ -764,16 +768,24 @@ function renderFoRight(){
       <div>
         <div class="fo-lbl">stunt group hits</div>
         <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
-          <div style="display:grid;grid-template-columns:1fr 44px 44px;background:var(--panel);padding:5px 10px;border-bottom:1px solid var(--border)">
+          <div style="display:grid;grid-template-columns:1fr 44px 44px 54px;background:var(--panel);padding:5px 10px;border-bottom:1px solid var(--border)">
             <span style="font-size:8px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--stone)">group</span>
             <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st1</span>
             <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st2</span>
+            <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">absent</span>
           </div>
-          ${ATHLETES.map(name=>{const o1=!!(s1h[name]),o2=!!(s2h[name]);return`<div style="display:grid;grid-template-columns:1fr 44px 44px;align-items:center;padding:5px 10px;border-top:1px solid var(--border)"><span style="font-size:11px;font-weight:500">${aL(name)}</span><div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleStuntHit(${fi},'stunt1Hits','${name}')"><div style="width:20px;height:20px;border:1.5px solid ${o1?"#4a9d6f":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${o1?"#4a9d6f":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${o1?"v":""}</span></div></div><div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleStuntHit(${fi},'stunt2Hits','${name}')"><div style="width:20px;height:20px;border:1.5px solid ${o2?"#4a9d6f":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${o2?"#4a9d6f":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${o2?"v":""}</span></div></div></div>`;}).join("")}
+          ${ATHLETES.map(name=>{const o1=!!(s1h[name]),o2=!!(s2h[name]),abs=!!(fo.absent&&fo.absent[name]);
+            function pinkBox(on,clickFn){return`<div style="display:flex;justify-content:center;cursor:pointer;opacity:${abs?"0.25":"1"}" onclick="${abs?"":clickFn}"><div style="width:20px;height:20px;border:1.5px solid ${on&&!abs?"#c4559a":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${on&&!abs?"#c4559a":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${on&&!abs?"v":""}</span></div></div>`;}
+            return`<div style="display:grid;grid-template-columns:1fr 44px 44px 54px;align-items:center;padding:5px 10px;border-top:1px solid var(--border);background:${abs?"rgba(180,0,0,0.04)":"transparent"}">
+              <span style="font-size:11px;font-weight:500;color:${abs?"var(--stone)":"var(--ink)"}">${aL(name)}${abs?" <span style='font-size:9px;color:#b33a2d'>(absent)</span>":""}</span>
+              ${pinkBox(o1,"toggleStuntHit("+fi+",'stunt1Hits','"+name+"')")}
+              ${pinkBox(o2,"toggleStuntHit("+fi+",'stunt2Hits','"+name+"')")}
+              <div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleAbsent(${fi},'${name}')"><div style="width:20px;height:20px;border:1.5px solid ${abs?"#b33a2d":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${abs?"#b33a2d":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${abs?"x":""}</span></div></div>
+            </div>`;}).join("")}
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid ${pyH?"#4a9d6f":"var(--border)"};border-radius:7px;cursor:pointer;background:${pyH?"#f0faf5":"transparent"};margin-top:8px" onclick="togglePyramidHit(${fi})">
-          <div style="width:20px;height:20px;border:1.5px solid ${pyH?"#4a9d6f":"var(--border)"};border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${pyH?"#4a9d6f":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${pyH?"v":""}</span></div>
-          <span style="font-size:12px;font-weight:${pyH?"600":"400"};color:${pyH?"#2d7a52":"var(--stone)"}">pyramid hit</span>
+          <div style="width:20px;height:20px;border:1.5px solid ${pyH?"#c4559a":"var(--border)"};border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${pyH?"#c4559a":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${pyH?"v":""}</span></div>
+          <span style="font-size:12px;font-weight:${pyH?"600":"400"};color:${pyH?"#c4559a":"var(--stone)"}">pyramid hit</span>
         </div>
       </div>
     </div>
@@ -795,7 +807,7 @@ function toggleDD(fi){const menu=document.getElementById("ded-menu-"+fi),wrap=do
 async function updateFoField(f,v){const s=getFo(curFoId);if(!s)return;s[f]=v;await foSave(s);}
 async function updateFoVideo(fi,v){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].videoUrl=v;await foSave(s);}
 async function updateDedDesc(fi,di,v){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions[di].desc=v;await foSave(s);}
-async function addFullout(){const s=getFo(curFoId);if(!s)return;s.fullouts=s.fullouts||[];s.fullouts.push({id:uid(),deductions:[],problems:[],videoUrl:"",stunt1Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),stunt2Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),pyramidHit:false});sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
+async function addFullout(){const s=getFo(curFoId);if(!s)return;s.fullouts=s.fullouts||[];s.fullouts.push({id:uid(),deductions:[],problems:[],videoUrl:"",stunt1Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),stunt2Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),pyramidHit:false,absent:Object.fromEntries(ATHLETES.map(n=>[n,false]))});sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function removeFullout(fi){if(!confirm("Remove?"))return;const s=getFo(curFoId);if(!s)return;s.fullouts.splice(fi,1);await foSave(s);renderFoRight();}
 async function addDed(fi,label,pts){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions=s.fullouts[fi].deductions||[];s.fullouts[fi].deductions.push({label,pts,desc:""});document.querySelectorAll(".ded-menu").forEach(m=>m.style.display="none");activeDedDD=null;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function removeDed(fi,di){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions.splice(di,1);await foSave(s);renderFoRight();}
@@ -825,7 +837,19 @@ async function toggleProb(fi,pi){
   try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
   catch{sd("fo","err","failed");}
 }
-async function toggleStuntHit(fi,field,name){const s=getFo(curFoId);if(!s)return;s.fullouts[fi][field]=s.fullouts[fi][field]||{};s.fullouts[fi][field][name]=!s.fullouts[fi][field][name];sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
+async function toggleAbsent(fi,name){
+  const s=getFo(curFoId);if(!s)return;
+  s.fullouts[fi].absent=s.fullouts[fi].absent||{};
+  s.fullouts[fi].absent[name]=!s.fullouts[fi].absent[name];
+  // If marking absent, clear their hits
+  if(s.fullouts[fi].absent[name]){
+    if(s.fullouts[fi].stunt1Hits)s.fullouts[fi].stunt1Hits[name]=false;
+    if(s.fullouts[fi].stunt2Hits)s.fullouts[fi].stunt2Hits[name]=false;
+  }
+  sd("fo","busy","saving");
+  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
+  catch{sd("fo","err","failed");}
+}const s=getFo(curFoId);if(!s)return;s.fullouts[fi][field]=s.fullouts[fi][field]||{};s.fullouts[fi][field][name]=!s.fullouts[fi][field][name];sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function togglePyramidHit(fi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].pyramidHit=!s.fullouts[fi].pyramidHit;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function delFoSession(){if(!confirm("Delete?"))return;await foDel(curFoId);curFoId=null;document.getElementById("fo-right").innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Session deleted.</div>';}
 
