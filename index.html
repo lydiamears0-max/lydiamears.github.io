@@ -17,56 +17,30 @@
   --border:#d8d7d5;--border2:#c8c7c5;
   --stone:#8a8a88;--ink:#1a1a1a;--ink-lt:#4a4a48;
   --putty:#9a9a98;--red:#b33a2d;--white:#fafafa;
-  --green:#2d7a52;--orange:#c47a1a;
+  --green:#2d7a52;--orange:#c47a1a;--pink:#c4559a;
 }
-html,body{width:100%;height:100%;background:var(--bg);}
-body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
+html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);}
 #app{width:100vw;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 .screen{display:none;width:100%;flex:1;min-height:0;overflow:hidden;}
 .screen.active{display:flex;flex-direction:column;}
-
-/* TOPBAR */
-.topbar{background:var(--ink);display:flex;align-items:center;padding:0 14px;height:54px;flex-shrink:0;gap:8px;z-index:100;}
+.topbar{background:var(--ink);display:flex;align-items:center;padding:0 16px;height:54px;flex-shrink:0;gap:8px;}
 .topbar-logo{height:42px;width:auto;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5));}
 .topbar-nav{display:flex;gap:2px;margin-left:auto;}
-.topbar-btn{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#555;padding:6px 12px;border-radius:6px;white-space:nowrap;}
+.topbar-btn{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#555;padding:6px 12px;border-radius:6px;}
 .topbar-btn:hover,.topbar-btn.active{color:#ddd;}
 .sync-wrap{display:flex;align-items:center;gap:5px;padding-left:10px;border-left:1px solid #2a2a2a;margin-left:6px;}
 .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#444;}
-.sync-dot.ok{background:#4a9d6f;}
-.sync-dot.err{background:#b33a2d;}
-.sync-dot.busy{background:#c4a44a;animation:pulse 1s infinite;}
+.sync-dot.ok{background:#4a9d6f;}.sync-dot.err{background:#b33a2d;}.sync-dot.busy{background:#c4a44a;animation:pulse 1s infinite;}
 .sync-lbl{font-size:9px;color:#555;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
-/* BACK BAR */
 .backbar{background:var(--ink);display:flex;align-items:center;padding:0 14px;height:42px;flex-shrink:0;gap:10px;}
 .back-btn{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;color:#666;padding:0;}
 .back-btn:hover{color:#bbb;}
 .backbar-title{font-family:'DM Serif Display',serif;font-size:15px;font-style:italic;color:#bbb;}
 .backbar-actions{margin-left:auto;display:flex;align-items:center;gap:8px;}
 .pill-btn{padding:5px 13px;background:transparent;border:1px solid #3a3a3a;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;color:#999;cursor:pointer;}
-.pill-btn:hover,.pill-btn.dark{background:rgba(255,255,255,.09);border-color:#555;color:#ccc;}
-
-/* BUTTONS & INPUTS */
-.btn-outline{width:100%;padding:9px;background:var(--panel);border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;}
-.btn-outline:disabled{opacity:.3;cursor:not-allowed;}
-.inp{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;height:36px;}
-.dark-inp{width:100%;padding:8px 10px;background:#222;border:1px solid #3a3a3a;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:#ddd;outline:none;height:36px;}
-.dark-inp:focus{border-color:#555;}
-.ta{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
-.ta::placeholder{color:var(--stone);opacity:.6;}
-.plan-ta{width:100%;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
-.scroller{overflow-y:auto;flex:1;min-height:0;}
-.panel{padding:18px;display:flex;flex-direction:column;gap:14px;}
-.field-block{display:flex;flex-direction:column;gap:7px;}
-.lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);display:block;}
-.lbl-xs{font-size:8.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);}
-.no-data{font-size:12px;color:var(--stone);font-style:italic;padding:8px 0;}
-.analytics-title{font-family:'DM Serif Display',serif;font-size:20px;font-style:italic;margin-bottom:3px;}
-.analytics-sub{font-size:11px;color:var(--stone);margin-bottom:12px;}
-
-/* HOME */
+.pill-btn.dark{background:rgba(255,255,255,.09);border-color:#555;color:#ccc;}
 .home-content{flex:1;overflow-y:auto;padding:20px;}
 .home-section-hd{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--stone);margin-bottom:10px;}
 .tmpl-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
@@ -75,52 +49,47 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .tmpl-day{font-family:'DM Serif Display',serif;font-size:21px;font-style:italic;}
 .tmpl-time{font-size:10px;color:var(--stone);}
 .tmpl-dur{margin-top:4px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--putty);}
-.saved-row{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 13px;cursor:pointer;margin-bottom:8px;transition:all .15s;}
+.saved-row{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 13px;cursor:pointer;margin-bottom:8px;}
 .saved-row:hover{border-color:var(--border2);}
 .saved-day{font-family:'DM Serif Display',serif;font-size:14px;font-style:italic;}
 .saved-date{font-size:10px;color:var(--stone);margin-top:2px;}
 .del-btn{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:4px 8px;}
 .del-btn:hover{color:var(--red);}
-
-/* CHECKLIST */
+.no-data{font-size:12px;color:var(--stone);font-style:italic;padding:8px 0;}
 .add-item-row{display:flex;gap:8px;margin-bottom:14px;}
 .add-item-inp{flex:1;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;}
 .add-item-btn{padding:8px 14px;background:var(--ink);color:white;border:none;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;}
 .cl-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--white);border:1px solid var(--border);border-radius:8px;margin-bottom:7px;}
 .cl-item.done{opacity:.55;}
-.check-box{width:20px;height:20px;border:1.5px solid var(--border);border-radius:4px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .12s;}
-.check-box.ticked{background:var(--green);border-color:var(--green);}
+.check-box{width:20px;height:20px;border:1.5px solid var(--border);border-radius:4px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.check-box.ticked{background:var(--pink);border-color:var(--pink);}
 .check-box.ticked::after{content:'';width:5px;height:9px;border:2px solid white;border-top:none;border-left:none;transform:rotate(45deg);display:block;margin-top:-2px;}
 .cl-text{flex:1;font-size:12px;line-height:1.4;}
 .cl-item.done .cl-text{text-decoration:line-through;color:var(--stone);}
-.cl-remove{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:2px 6px;}
-.cl-remove:hover{color:var(--red);}
-
-/* ANALYTICS TABS */
+.cl-rem{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:2px 6px;}
 .analytics-tab-row{display:flex;gap:8px;margin-bottom:18px;}
 .a-tab-btn{padding:6px 16px;border:1px solid var(--border);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--stone);cursor:pointer;background:transparent;}
 .a-tab-btn.active{background:var(--ink);border-color:var(--ink);color:white;}
 .lesson-tabs{display:flex;gap:8px;margin-bottom:14px;}
 .lesson-tab{padding:6px 14px;border:1px solid var(--border);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--stone);cursor:pointer;background:transparent;}
 .lesson-tab.active{background:var(--ink);border-color:var(--ink);color:white;}
-
-/* TABLES */
+.analytics-title{font-family:'DM Serif Display',serif;font-size:20px;font-style:italic;margin-bottom:3px;}
+.analytics-sub{font-size:11px;color:var(--stone);margin-bottom:12px;}
 .data-table{width:100%;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:18px;}
-.table-hd{background:var(--panel);border-bottom:1px solid var(--border);}
-.table-row{border-top:1px solid var(--border);}
-.table-row:nth-child(even){background:var(--surface);}
-.pct-bar-wrap{background:var(--border);border-radius:100px;height:5px;overflow:hidden;flex:1;}
+.pct-bar-wrap{background:var(--border);border-radius:100px;height:5px;overflow:hidden;flex:1;min-width:40px;}
 .pct-bar{height:100%;border-radius:100px;}
-
-/* BUILDER */
+.fo-session-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.fo-session-card-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--border);}
+.fo-fo-hd{padding:6px 14px;background:var(--ink);color:#ddd;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-top:1px solid #333;}
+.fo-ded-line{padding:7px 14px;border-top:1px solid var(--border);font-size:11px;color:var(--ink-lt);}
 .builder-wrap{display:flex;flex:1;min-height:0;overflow:hidden;}
 .builder-left{width:250px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
 .builder-right{flex:1;background:var(--surface);overflow-y:auto;}
-.builder-left .lbl,.builder-left .lbl-xs{color:#555;}
+.builder-left .lbl{color:#555;}
 .prog-track{height:4px;background:#2a2a2a;border-radius:100px;overflow:hidden;}
 .prog-fill{height:100%;border-radius:100px;transition:width .3s;}
 .prog-meta{display:flex;justify-content:space-between;font-size:10px;color:#666;}
-.prog-meta .red{color:var(--red);font-weight:600;}
+.prog-meta .over{color:var(--red);font-weight:600;}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
 .cat-chip{background:var(--panel);border:1px solid var(--border);border-radius:7px;padding:8px 4px;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--ink-lt);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;line-height:1.2;}
 .cat-chip.sel{background:var(--white);border-color:var(--ink);color:var(--ink);font-weight:600;}
@@ -137,8 +106,15 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .tchips{display:flex;flex-wrap:wrap;gap:4px;}
 .tchip{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--ink-lt);cursor:pointer;}
 .tchip.sel{background:var(--ink);border-color:var(--ink);color:white;font-weight:600;}
-
-/* PLAN */
+.dark-inp{width:100%;padding:8px 10px;background:#222;border:1px solid #3a3a3a;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:#ddd;outline:none;height:36px;}
+.ta{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
+.ta::placeholder{color:var(--stone);opacity:.6;}
+.btn-outline{width:100%;padding:9px;background:var(--panel);border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;}
+.btn-outline:disabled{opacity:.3;cursor:not-allowed;}
+.lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);display:block;}
+.lbl-xs{font-size:8.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);}
+.panel{padding:18px;display:flex;flex-direction:column;gap:14px;}
+.field-block{display:flex;flex-direction:column;gap:7px;}
 .plan-wrap{display:flex;flex:1;min-height:0;overflow:hidden;}
 .plan-sidebar{width:210px;flex-shrink:0;background:var(--ink);overflow-y:auto;}
 .plan-sidebar .lbl{color:#555;}
@@ -148,7 +124,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .attend-item{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;cursor:pointer;user-select:none;border:1px solid transparent;}
 .attend-item.on{background:#1e1e1e;border-color:#2e2e2e;}
 .tick{width:14px;height:14px;border:1.5px solid #3a3a3a;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#666;font-weight:700;flex-shrink:0;}
-.attend-item.on .tick{border-color:#555;color:#999;}
+.attend-item.on .tick{border-color:var(--pink);color:var(--pink);}
 .aname{font-size:11px;color:#777;}
 .attend-item.on .aname{color:#bbb;}
 .plan-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
@@ -167,19 +143,17 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .stunt-tbl-hd span{font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:center;}
 .stunt-tbl-hd span:first-child{text-align:left;}
 .stunt-tbl-row{display:grid;grid-template-columns:1fr 64px 64px;align-items:center;padding:5px 10px;border-top:1px solid var(--border);}
-.sname{font-size:11px;color:var(--ink);}
 .stunt-inp{width:54px;padding:4px 5px;background:var(--panel);border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);text-align:center;outline:none;display:block;margin:0 auto;}
+.plan-ta{width:100%;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
 .end-mark{text-align:center;padding:24px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--border);}
-
-/* FULLOUTS */
 .fo-wrap{display:flex;flex:1;min-height:0;overflow:hidden;}
 .fo-left{width:200px;flex-shrink:0;background:var(--ink);padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;}
 .fo-right{flex:1;background:var(--bg);overflow-y:auto;padding:18px 22px 60px;}
 .fo-session-row{background:rgba(255,255,255,.05);border:1px solid #2a2a2a;border-radius:8px;padding:10px 12px;cursor:pointer;margin-bottom:7px;}
 .fo-session-row.active,.fo-session-row:hover{background:rgba(255,255,255,.1);border-color:#444;}
 .fo-session-date{font-family:'DM Serif Display',serif;font-size:14px;font-style:italic;color:#ccc;}
-.fo-session-count{font-size:10px;color:#555;margin-top:2px;}
-.add-fo-btn{width:100%;padding:8px;background:rgba(255,255,255,.07);border:1px solid #333;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:#bbb;cursor:pointer;}
+.fo-session-cnt{font-size:10px;color:#555;margin-top:2px;}
+.add-fo-btn{width:100%;padding:8px;background:rgba(255,255,255,.07);border:1px solid #333;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:#bbb;cursor:pointer;}
 .fo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;}
 .fo-card-hd{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--border);}
 .fo-card-title{font-family:'DM Serif Display',serif;font-size:17px;font-style:italic;}
@@ -188,13 +162,13 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .fo-inp{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;}
 .fo-ta{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);outline:none;resize:vertical;line-height:1.5;}
 .ded-row{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border-bottom:1px solid var(--border);}
-.ded-top-row{display:flex;align-items:center;gap:6px;}
-.ded-tag{flex:0 0 auto;background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--ink-lt);}
+.ded-top{display:flex;align-items:center;gap:6px;}
+.ded-tag{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--ink-lt);white-space:nowrap;}
 .ded-pts{font-size:11px;font-weight:700;color:var(--red);}
-.ded-remove{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:2px 6px;margin-left:auto;}
-.ded-remove:hover{color:var(--red);}
-.ded-desc-inp{width:100%;padding:5px 8px;background:var(--panel);border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none;}
-.ded-total-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--panel);border-top:1px solid var(--border);}
+.ded-rem{background:none;border:none;cursor:pointer;color:var(--stone);font-size:11px;padding:2px 6px;margin-left:auto;}
+.ded-rem:hover{color:var(--red);}
+.ded-desc{width:100%;padding:5px 8px;background:var(--panel);border:1px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none;}
+.ded-total{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--panel);border-top:1px solid var(--border);}
 .add-ded-btn{background:none;border:1px solid var(--border);border-radius:7px;padding:7px 12px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--stone);cursor:pointer;}
 .ded-menu{position:absolute;top:100%;left:0;z-index:200;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.12);min-width:230px;overflow:hidden;margin-top:4px;}
 .ded-menu-hd{padding:5px 12px;font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--stone);background:var(--panel);border-bottom:1px solid var(--border);}
@@ -205,46 +179,19 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 .prob-item{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border-bottom:1px solid var(--border);}
 .prob-item:last-child{border-bottom:none;}
 .prob-chk{width:18px;height:18px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.prob-chk.done{background:var(--green);border-color:var(--green);}
+.prob-chk.done{background:var(--pink);border-color:var(--pink);}
 .prob-chk.done::after{content:'';width:4px;height:8px;border:2px solid white;border-top:none;border-left:none;transform:rotate(45deg);display:block;margin-top:-2px;}
 .prob-txt{flex:1;font-size:12px;color:var(--ink);}
 .prob-item.done .prob-txt{text-decoration:line-through;color:var(--stone);}
-.prob-remove{background:none;border:none;cursor:pointer;color:var(--stone);font-size:10px;padding:2px 4px;margin-left:auto;}
-
-/* COMBINED STUNT TABLE */
-.cst{width:100%;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:18px;}
-.cst-section-row{display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;background:var(--ink);}
-.cst-section-cell{padding:5px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;text-align:center;border-right:1px solid rgba(255,255,255,.15);}
-.cst-section-cell:last-child{border-right:none;}
-.cst-col-row{display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;background:var(--panel);border-bottom:1px solid var(--border);}
-.cst-col-cell{padding:6px 6px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center;border-right:1px solid var(--border);}
-.cst-col-cell:last-child{border-right:none;}
-.cst-data-row{display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;border-top:1px solid var(--border);align-items:center;}
-.cst-cell{padding:6px 6px;font-size:11px;color:var(--ink);text-align:center;border-right:1px solid var(--border);}
-.cst-cell:last-child{border-right:none;}
-
-/* FO ANALYTICS */
-.fo-session-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
-.fo-session-card-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--border);}
-.fo-fullout-hd{padding:6px 14px;background:var(--ink);color:var(--surface);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-top:1px solid #333;}
-.fo-ded-line{padding:7px 14px;border-top:1px solid var(--border);font-size:11px;color:var(--ink-lt);}
-
-/* RESPONSIVE */
+.prob-rem{background:none;border:none;cursor:pointer;color:var(--stone);font-size:10px;padding:2px 4px;margin-left:auto;}
 @media(max-width:680px){
-  .topbar-btn{font-size:10px;padding:5px 8px;letter-spacing:.8px;}
+  .topbar-btn{font-size:10px;padding:5px 8px;}
   .builder-wrap{flex-direction:column;}
   .builder-left{width:100%;max-height:42vh;}
   .plan-wrap{flex-direction:column;}
   .plan-sidebar{width:100%;max-height:38vh;}
   .fo-wrap{flex-direction:column;}
-  .fo-left{width:100%;max-height:34vh;flex-direction:row;flex-wrap:wrap;}
-  .cst-section-row,.cst-col-row,.cst-data-row{grid-template-columns:100px repeat(2,1fr) repeat(2,1fr) 1fr 50px;}
-  .cst-section-cell:nth-child(3),.cst-col-cell:nth-child(4),.cst-col-cell:nth-child(5),.cst-col-cell:nth-child(7),.cst-col-cell:nth-child(8),.cst-cell:nth-child(4),.cst-cell:nth-child(5),.cst-cell:nth-child(7),.cst-cell:nth-child(8){display:none;}
-}
-@media(min-width:681px) and (max-width:1024px){
-  .builder-left{width:230px;}
-  .plan-sidebar{width:190px;}
-  .fo-left{width:180px;}
+  .fo-left{width:100%;max-height:34vh;}
 }
 </style>
 </head>
@@ -263,11 +210,10 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
     </nav>
     <div class="sync-wrap">
       <div class="sync-dot busy" id="home-sync-dot"></div>
-      <span class="sync-lbl" id="home-sync-label">connecting</span>
+      <span class="sync-lbl" id="home-sync-lbl">connecting</span>
     </div>
   </div>
   <div class="home-content">
-    <!-- PLANS -->
     <div id="tab-plans">
       <div class="home-section-hd">new plan</div>
       <div class="tmpl-row">
@@ -285,15 +231,13 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
       <div class="home-section-hd">saved plans</div>
       <div id="saved-list"><div class="no-data">Connecting...</div></div>
     </div>
-    <!-- ANALYTICS -->
     <div id="tab-analytics" style="display:none">
       <div class="analytics-tab-row">
-        <button class="a-tab-btn active" onclick="setAnalyticsTab('plans',this)">class plans</button>
-        <button class="a-tab-btn" onclick="setAnalyticsTab('fullouts',this)">fullouts</button>
+        <button class="a-tab-btn active" onclick="setATab('plans',this)">class plans</button>
+        <button class="a-tab-btn" onclick="setATab('fullouts',this)">fullouts</button>
       </div>
       <div id="analytics-content"></div>
     </div>
-    <!-- CHECKLIST -->
     <div id="tab-checklist" style="display:none">
       <div class="home-section-hd" style="margin-bottom:12px">problems / things to fix</div>
       <div class="add-item-row">
@@ -352,7 +296,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
 </div>
 
 <!-- PLAN -->
-<div id="plan" class="screen">
+<div id="plan-view" class="screen">
   <div class="backbar">
     <button class="back-btn" onclick="goHome()">&#8592; back</button>
     <span class="backbar-title" id="p-hd-title"></span>
@@ -378,7 +322,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--ink);overflow:hidden;}
           <div class="lbl" style="margin-bottom:6px">focus items</div>
           <div id="p-cl-list"></div>
         </div>
-        <div class="sync-dot" id="plan-sync-dot2" style="display:none"></div>
       </div>
     </div>
     <div class="plan-main">
@@ -432,13 +375,12 @@ const CATS=[
   {id:"fullout",label:"Fullout",icon:"&#9654;"}
 ];
 const TIMES=[5,10,15,20,25,30,35,40,45,60];
-const TEMPLATES={monday:{id:"monday",display:"Monday",time:"4:00 pm - 5:45 pm",duration:105},wednesday:{id:"wednesday",display:"Wednesday",time:"7:00 pm - 9:00 pm",duration:120}};
+const TMPLS={monday:{id:"monday",display:"Monday",time:"4:00 pm - 5:45 pm",duration:105},wednesday:{id:"wednesday",display:"Wednesday",time:"7:00 pm - 9:00 pm",duration:120}};
 const DED_TYPES=[{cat:"ROUTINE INFRACTIONS",items:[{label:"Athlete Fall",pts:0.25},{label:"Building Bobble",pts:0.40},{label:"Building Fall",pts:0.75},{label:"Major Building Fall",pts:1.25}]},{cat:"RULE VIOLATIONS",items:[{label:"Building safety violation",pts:1.0}]}];
 
 let plansCache=[],foCache=[],clCache=[];
-let currentTplId=null,currentPlanId=null,pickedCat=null,sections=[];
-let saveTimer=null,homeTab_cur="plans",aTab="plans",aLesson="all";
-let curFoId=null,activeDedDD=null;
+let curTplId=null,curPlanId=null,curFoId=null,pickedCat=null,sections=[];
+let homeTabCur="plans",aTab="plans",aLesson="all",saveTimer=null,activeDedDD=null;
 let selClIds=new Set();
 
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
@@ -447,56 +389,54 @@ function fmtDate(s){if(!s)return"";return new Date(s+"T12:00:00").toLocaleDateSt
 function fmtShort(s){if(!s)return"--";return new Date(s+"T12:00:00").toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"});}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");}
-function sd(ctx,state,lbl){
-  const dot=document.getElementById(ctx+"-sync-dot"),l=document.getElementById(ctx+"-sync-lbl")||document.getElementById(ctx+"-sync-label");
-  if(dot)dot.className="sync-dot "+(state==="ok"?"ok":state==="err"?"err":state==="busy"?"busy":"");
+function sd(id,state,lbl){
+  const d=document.getElementById(id+"-sync-dot"),l=document.getElementById(id+"-sync-lbl");
+  if(d)d.className="sync-dot "+(state==="ok"?"ok":state==="err"?"err":state==="busy"?"busy":"");
   if(l)l.textContent=lbl||"";
 }
-function getPlan(id){return plansCache.find(p=>p.id===id);}
-function getFo(id){return foCache.find(s=>s.id===id);}
+function getPlan(id){return plansCache.find(p=>p.id===(id||curPlanId));}
+function getFo(){return foCache.find(s=>s.id===curFoId);}
 function pctCol(p){return p>=90?"#2d7a52":p>=75?"#c47a1a":"#b33a2d";}
 
-document.addEventListener("click",e=>{if(activeDedDD&&!activeDedDD.contains(e.target)){activeDedDD.querySelector(".ded-menu").style.display="none";activeDedDD=null;}});
+document.addEventListener("click",e=>{if(activeDedDD&&!activeDedDD.contains(e.target)){const m=activeDedDD.querySelector(".ded-menu");if(m)m.style.display="none";activeDedDD=null;}});
 
 function startLiveSync(){
   sd("home","busy","connecting");
-  plansCol.orderBy("updated_at","desc").onSnapshot(snap=>{plansCache=snap.docs.map(d=>d.data());sd("home","ok","live");renderSaved();if(homeTab_cur==="analytics")renderATab();},()=>sd("home","err","offline"));
-  foCol.orderBy("date","desc").onSnapshot(snap=>{foCache=snap.docs.map(d=>d.data());renderFoList();if(homeTab_cur==="analytics"&&aTab==="fullouts")renderATab();});
+  plansCol.orderBy("updated_at","desc").onSnapshot(snap=>{plansCache=snap.docs.map(d=>d.data());sd("home","ok","live");renderSaved();if(homeTabCur==="analytics")renderATab();},()=>sd("home","err","offline"));
+  foCol.orderBy("date","desc").onSnapshot(snap=>{foCache=snap.docs.map(d=>d.data());renderFoList();if(homeTabCur==="analytics"&&aTab==="fullouts")renderATab();});
   clCol.orderBy("created_at","asc").onSnapshot(snap=>{clCache=snap.docs.map(d=>d.data());renderCL();renderBuilderIssues();renderPlanCL();});
 }
 async function dbSave(p){p.updated_at=new Date().toISOString();await plansCol.doc(p.id).set(p);}
 async function dbDel(id){await plansCol.doc(id).delete();}
-async function foSave(s){s.updated_at=new Date().toISOString();await foCol.doc(s.id).set(s);}
-async function foDel(id){await foCol.doc(id).delete();}
+async function foSave(s){s.updated_at=new Date().toISOString();sd("fo","busy","saving");try{await foCol.doc(s.id).set(s);sd("fo","ok","saved");}catch{sd("fo","err","failed");}}
 async function clSave(item){await clCol.doc(item.id).set(item);}
 async function clDel(id){await clCol.doc(id).delete();}
 
 /* HOME */
 function homeTab(tab,btn){
-  homeTab_cur=tab;
+  homeTabCur=tab;
   document.querySelectorAll(".topbar-btn").forEach(b=>b.classList.remove("active"));
   if(btn)btn.classList.add("active");
   ["plans","analytics","checklist"].forEach(t=>{const el=document.getElementById("tab-"+t);if(el)el.style.display=t===tab?"block":"none";});
   if(tab==="analytics")renderATab();
-  if(tab==="checklist")renderCL();
 }
 function goHome(){showScreen("home");}
+function goFullouts(){showScreen("fullouts");renderFoList();}
 
 function renderSaved(){
   const list=document.getElementById("saved-list");
   if(!plansCache.length){list.innerHTML='<div class="no-data">No saved plans yet.</div>';return;}
-  const s=[...plansCache].filter(p=>p.date).sort((a,b)=>b.date.localeCompare(a.date));
-  const u=plansCache.filter(p=>!p.date);
-  list.innerHTML=[...s,...u].map(p=>{const t=TEMPLATES[p.templateId]||{};return`<div class="saved-row" onclick="openPlan('${p.id}')"><div><div class="saved-day">${esc(t.display||p.templateId)}</div><div class="saved-date">${p.date?fmtDate(p.date):"no date set"}</div></div><button class="del-btn" onclick="delPlan(event,'${p.id}')">x</button></div>`;}).join("");
+  const sorted=[...plansCache].filter(p=>p.date).sort((a,b)=>b.date.localeCompare(a.date));
+  const undated=plansCache.filter(p=>!p.date);
+  list.innerHTML=[...sorted,...undated].map(p=>{const t=TMPLS[p.templateId]||{};return`<div class="saved-row" onclick="openPlan('${p.id}')"><div><div class="saved-day">${esc(t.display||p.templateId)}</div><div class="saved-date">${p.date?fmtDate(p.date):"no date set"}</div></div><button class="del-btn" onclick="delPlan(event,'${p.id}')">x</button></div>`;}).join("");
 }
 async function delPlan(e,id){e.stopPropagation();if(!confirm("Delete?"))return;await dbDel(id);}
-function goFullouts(){showScreen("fullouts");renderFoList();}
 
 /* CHECKLIST */
 function renderCL(){
   const list=document.getElementById("cl-list");if(!list)return;
   if(!clCache.length){list.innerHTML='<div class="no-data">No items yet.</div>';return;}
-  list.innerHTML=clCache.map(item=>`<div class="cl-item${item.done?" done":""}"><div class="check-box${item.done?" ticked":""}" onclick="toggleCL('${item.id}')"></div><span class="cl-text">${esc(item.text)}</span><button class="cl-remove" onclick="removeCL('${item.id}')">x</button></div>`).join("");
+  list.innerHTML=clCache.map(item=>`<div class="cl-item${item.done?" done":""}"><div class="check-box${item.done?" ticked":""}" onclick="toggleCL('${item.id}')"></div><span class="cl-text">${esc(item.text)}</span><button class="cl-rem" onclick="removeCL('${item.id}')">x</button></div>`).join("");
 }
 async function addCLItem(){const inp=document.getElementById("cl-inp");const txt=inp.value.trim();if(!txt)return;inp.value="";await clSave({id:uid(),text:txt,done:false,created_at:new Date().toISOString()});}
 async function toggleCL(id){const i=clCache.find(x=>x.id===id);if(!i)return;i.done=!i.done;await clSave(i);}
@@ -507,22 +447,20 @@ function renderBuilderIssues(){
   const pending=clCache.filter(i=>!i.done);
   if(!pending.length){wrap.style.display="none";return;}
   wrap.style.display="flex";
-  list.innerHTML=pending.map(item=>{const sel=selClIds.has(item.id);return`<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid ${sel?"#aaa":"#333"};border-radius:6px;cursor:pointer;background:${sel?"#2a2a2a":"transparent"}" onclick="toggleBI('${item.id}')"><div style="width:14px;height:14px;border:1.5px solid ${sel?"#aaa":"#444"};border-radius:3px;flex-shrink:0;background:${sel?"#aaa":"transparent"};display:flex;align-items:center;justify-content:center"><span style="color:#111;font-size:8px;font-weight:700">${sel?"v":""}</span></div><span style="font-size:11px;color:${sel?"#ddd":"#777"}">${esc(item.text)}</span></div>`;}).join("");
+  list.innerHTML=pending.map(item=>{const sel=selClIds.has(item.id);return`<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid ${sel?"#aaa":"#333"};border-radius:6px;cursor:pointer;background:${sel?"#2a2a2a":"transparent"}" onclick="toggleBI('${item.id}')"><div style="width:14px;height:14px;border:1.5px solid ${sel?"#c4559a":"#444"};border-radius:3px;flex-shrink:0;background:${sel?"#c4559a":"transparent"};display:flex;align-items:center;justify-content:center"><span style="color:white;font-size:8px;font-weight:700">${sel?"v":""}</span></div><span style="font-size:11px;color:${sel?"#ddd":"#777"}">${esc(item.text)}</span></div>`;}).join("");
 }
 function toggleBI(id){if(selClIds.has(id))selClIds.delete(id);else selClIds.add(id);renderBuilderIssues();}
 
 function renderPlanCL(){
-  const plan=getPlan(currentPlanId);
-  const wrap=document.getElementById("p-cl-wrap"),list=document.getElementById("p-cl-list");if(!wrap||!list)return;
-  const ids=plan?.checklistIds||[];
-  const items=clCache.filter(i=>ids.includes(i.id));
+  const plan=getPlan();const wrap=document.getElementById("p-cl-wrap"),list=document.getElementById("p-cl-list");if(!wrap||!list)return;
+  const ids=plan?.checklistIds||[];const items=clCache.filter(i=>ids.includes(i.id));
   if(!items.length){wrap.style.display="none";return;}
   wrap.style.display="block";
-  list.innerHTML=items.map(item=>`<div style="display:flex;align-items:flex-start;gap:6px;padding:5px 7px;border-radius:5px;cursor:pointer;${item.done?"opacity:.6":""}"><div style="width:14px;height:14px;border:1.5px solid ${item.done?"#4a9d6f":"#3a3a3a"};border-radius:3px;flex-shrink:0;margin-top:1px;background:${item.done?"#4a9d6f":"transparent"};display:flex;align-items:center;justify-content:center" onclick="toggleCL('${item.id}')"><span style="color:white;font-size:8px;font-weight:700">${item.done?"v":""}</span></div><span style="font-size:11px;color:${item.done?"#555":"#aaa"};${item.done?"text-decoration:line-through":""}">${esc(item.text)}</span></div>`).join("");
+  list.innerHTML=items.map(item=>`<div style="display:flex;align-items:flex-start;gap:6px;padding:5px 7px;border-radius:5px;${item.done?"opacity:.6":""}"><div style="width:14px;height:14px;border:1.5px solid ${item.done?"#c4559a":"#3a3a3a"};border-radius:3px;flex-shrink:0;margin-top:1px;background:${item.done?"#c4559a":"transparent"};display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="toggleCL('${item.id}')"><span style="color:white;font-size:8px;font-weight:700">${item.done?"v":""}</span></div><span style="font-size:11px;color:${item.done?"#555":"#aaa"};${item.done?"text-decoration:line-through":""}">${esc(item.text)}</span></div>`).join("");
 }
 
 /* ANALYTICS */
-function setAnalyticsTab(tab,btn){aTab=tab;document.querySelectorAll(".a-tab-btn").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");renderATab();}
+function setATab(tab,btn){aTab=tab;document.querySelectorAll(".a-tab-btn").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");renderATab();}
 function setALesson(val){aLesson=val;renderATab();}
 function renderATab(){const el=document.getElementById("analytics-content");if(!el)return;el.innerHTML=aTab==="plans"?renderPlansA():renderFoA();}
 
@@ -531,163 +469,82 @@ function renderPlansA(){
   const sorted=[...filtered].filter(p=>p.date).sort((a,b)=>a.date.localeCompare(b.date));
   return`<div class="lesson-tabs"><div class="lesson-tab${aLesson==="all"?" active":""}" onclick="setALesson('all')">all</div><div class="lesson-tab${aLesson==="monday"?" active":""}" onclick="setALesson('monday')">monday</div><div class="lesson-tab${aLesson==="wednesday"?" active":""}" onclick="setALesson('wednesday')">wednesday</div></div>
   <div class="analytics-title">stunt group attendance</div><div class="analytics-sub">${sorted.length} lesson${sorted.length!==1?"s":""} tracked</div>${renderAttTable(sorted)}
-  <div class="analytics-title">combined stunt performance</div><div class="analytics-sub">1st stunt · 2nd stunt · combined — coloured by hit rate</div>${renderCST(sorted)}`;
+  <div class="analytics-title">combined stunt performance</div><div class="analytics-sub">1st stunt · 2nd stunt · combined</div>${renderCST(sorted)}`;
 }
 
 function renderAttTable(sorted){
   if(!sorted.length)return'<div class="no-data">No data yet.</div>';
-  return`<div class="data-table"><div class="table-hd" style="display:grid;grid-template-columns:130px 1fr 70px 55px;padding:7px 12px"><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">group</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">lessons</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">sessions</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">rate</span></div>${ATHLETES.map(name=>{
-    const present=sorted.filter(p=>p.attendance&&p.attendance[name]).length;
-    const pct=sorted.length?Math.round((present/sorted.length)*100):0;
-    const col=pctCol(pct);
-    return`<div class="table-row" style="display:grid;grid-template-columns:130px 1fr 70px 55px;padding:7px 12px;align-items:center"><span style="font-size:11px;font-weight:500">${aL(name)}</span><div style="display:flex;gap:3px;flex-wrap:wrap">${sorted.map(p=>`<div style="width:9px;height:9px;border-radius:50%;background:${p.attendance&&p.attendance[name]?"#1a1a1a":"#d8d7d5"}" title="${fmtShort(p.date)}"></div>`).join("")}</div><span style="font-size:11px;color:var(--stone);text-align:right">${present}/${sorted.length}</span><span style="font-size:12px;font-weight:700;text-align:right;color:${col}">${pct}%</span></div>`;
-  }).join("")}</div>`;
+  return`<div class="data-table"><div style="display:grid;grid-template-columns:130px 1fr 70px 55px;background:var(--panel);padding:7px 12px;border-bottom:1px solid var(--border)"><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">group</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">lessons</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">sessions</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">rate</span></div>${ATHLETES.map(name=>{const present=sorted.filter(p=>p.attendance&&p.attendance[name]).length;const pct=sorted.length?Math.round((present/sorted.length)*100):0;const col=pctCol(pct);return`<div style="display:grid;grid-template-columns:130px 1fr 70px 55px;padding:7px 12px;border-top:1px solid var(--border);align-items:center"><span style="font-size:11px;font-weight:500">${aL(name)}</span><div style="display:flex;gap:3px;flex-wrap:wrap">${sorted.map(p=>`<div style="width:9px;height:9px;border-radius:50%;background:${p.attendance&&p.attendance[name]?"#1a1a1a":"#d8d7d5"}" title="${fmtShort(p.date)}"></div>`).join("")}</div><span style="font-size:11px;color:var(--stone);text-align:right">${present}/${sorted.length}</span><span style="font-size:12px;font-weight:700;text-align:right;color:${col}">${pct}%</span></div>`;}).join("")}</div>`;
 }
 
 function renderCST(sorted){
   if(!sorted.length)return'<div class="no-data">No data yet.</div>';
-  function stuntStats(sorted,stuntId){
-    const stats={};
-    ATHLETES.forEach(n=>{stats[n]={h:0,a:0};});
-    sorted.forEach(plan=>{const sec=plan.sections&&plan.sections.find(s=>s.categoryId===stuntId);if(sec&&sec.stuntData)ATHLETES.forEach(n=>{if(sec.stuntData[n]){stats[n].h+=parseInt(sec.stuntData[n].hits)||0;stats[n].a+=parseInt(sec.stuntData[n].attempts)||0;}});});
-    return stats;
-  }
-  const s1=stuntStats(sorted,"stunt1"),s2=stuntStats(sorted,"stunt2");
-  function barCell(h,a,bg){
-    const pct=a>0?Math.round((h/a)*100):null;
-    const col=pct!==null?pctCol(pct):"var(--stone)";
-    return`<div class="cst-cell" style="background:${bg}">${pct!==null?`<div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap" style="min-width:30px"><div class="pct-bar" style="width:${pct}%;background:${col}"></div></div><span style="font-size:10px;font-weight:700;color:${col};white-space:nowrap">${pct}%</span></div>`:'<span style="font-size:10px;color:var(--stone)">--</span>'}</div>`;
-  }
-  function numCell(v,bg){return`<div class="cst-cell" style="background:${bg}">${v||"--"}</div>`;}
-  return`<div class="cst">
-    <div class="cst-section-row">
-      <div class="cst-section-cell" style="background:#1a1a1a;text-align:left"></div>
-      <div class="cst-section-cell" style="grid-column:span 3;background:#2a2a2a">1st stunt</div>
-      <div class="cst-section-cell" style="grid-column:span 3;background:#1a1a1a">2nd stunt</div>
-      <div class="cst-section-cell" style="grid-column:span 2;background:#111">combined</div>
-    </div>
-    <div class="cst-col-row">
-      <div class="cst-col-cell" style="text-align:left">group</div>
-      <div class="cst-col-cell">hits</div><div class="cst-col-cell">att.</div><div class="cst-col-cell">rate</div>
-      <div class="cst-col-cell">hits</div><div class="cst-col-cell">att.</div><div class="cst-col-cell">rate</div>
-      <div class="cst-col-cell">rate</div><div class="cst-col-cell">%</div>
-    </div>
-    ${ATHLETES.map((name,i)=>{
-      const bg=i%2===0?"var(--surface)":"transparent";
-      const {h:h1,a:a1}=s1[name],{h:h2,a:a2}=s2[name];
-      const tH=h1+h2,tA=a1+a2;
-      const tPct=tA>0?Math.round((tH/tA)*100):null;
-      const tCol=tPct!==null?pctCol(tPct):"var(--stone)";
-      return`<div class="cst-data-row">
-        <div class="cst-cell" style="font-size:11px;font-weight:500;text-align:left;background:${bg}">${aL(name)}</div>
-        ${numCell(h1||"",bg)}${numCell(a1||"",bg)}${barCell(h1,a1,bg)}
-        ${numCell(h2||"",bg)}${numCell(a2||"",bg)}${barCell(h2,a2,bg)}
-        ${barCell(tH,tA,bg)}
-        <div class="cst-cell" style="font-size:11px;font-weight:700;color:${tCol};background:${bg}">${tPct!==null?tPct+"%":"--"}</div>
-      </div>`;
-    }).join("")}
+  function ss(sorted,stuntId){const stats={};ATHLETES.forEach(n=>{stats[n]={h:0,a:0};});sorted.forEach(plan=>{const sec=plan.sections&&plan.sections.find(s=>s.categoryId===stuntId);if(sec&&sec.stuntData)ATHLETES.forEach(n=>{if(sec.stuntData[n]){stats[n].h+=parseInt(sec.stuntData[n].hits)||0;stats[n].a+=parseInt(sec.stuntData[n].attempts)||0;}});});return stats;}
+  const s1=ss(sorted,"stunt1"),s2=ss(sorted,"stunt2");
+  function barCell(h,a,bg){const pct=a>0?Math.round((h/a)*100):null;const col=pct!==null?pctCol(pct):"var(--stone)";return`<div style="padding:6px 6px;border-right:1px solid var(--border);background:${bg}">${pct!==null?`<div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap" style="min-width:30px"><div class="pct-bar" style="width:${pct}%;background:${col}"></div></div><span style="font-size:10px;font-weight:700;color:${col}">${pct}%</span></div>`:'<span style="font-size:10px;color:var(--stone)">--</span>'}</div>`;}
+  return`<div style="width:100%;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:18px">
+    <div style="display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;background:var(--ink)"><div style="padding:5px 8px"></div><div style="padding:5px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;text-align:center;grid-column:span 3;background:#2a2a2a">1st stunt</div><div style="padding:5px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;text-align:center;grid-column:span 3;background:#1a1a1a">2nd stunt</div><div style="padding:5px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;text-align:center;grid-column:span 2;background:#111">combined</div></div>
+    <div style="display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;background:var(--panel);border-bottom:1px solid var(--border)"><div style="padding:6px 8px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone)">group</div>${["hits","att.","rate","hits","att.","rate","rate","%"].map(h=>`<div style="padding:6px 6px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center;border-right:1px solid var(--border)">${h}</div>`).join("")}</div>
+    ${ATHLETES.map((name,i)=>{const bg=i%2===0?"var(--surface)":"transparent";const {h:h1,a:a1}=s1[name],{h:h2,a:a2}=s2[name];const tH=h1+h2,tA=a1+a2;const tPct=tA>0?Math.round((tH/tA)*100):null;const tCol=tPct!==null?pctCol(tPct):"var(--stone)";return`<div style="display:grid;grid-template-columns:130px repeat(3,1fr) repeat(3,1fr) 1fr 60px;border-top:1px solid var(--border);align-items:center"><div style="padding:6px 8px;font-size:11px;font-weight:500;background:${bg}">${aL(name)}</div><div style="padding:6px 6px;font-size:11px;text-align:center;border-right:1px solid var(--border);background:${bg}">${h1||"--"}</div><div style="padding:6px 6px;font-size:11px;text-align:center;border-right:1px solid var(--border);background:${bg}">${a1||"--"}</div>${barCell(h1,a1,bg)}<div style="padding:6px 6px;font-size:11px;text-align:center;border-right:1px solid var(--border);background:${bg}">${h2||"--"}</div><div style="padding:6px 6px;font-size:11px;text-align:center;border-right:1px solid var(--border);background:${bg}">${a2||"--"}</div>${barCell(h2,a2,bg)}${barCell(tH,tA,bg)}<div style="padding:6px 6px;font-size:11px;font-weight:700;color:${tCol};background:${bg}">${tPct!==null?tPct+"%":"--"}</div></div>`;}).join("")}
   </div>`;
 }
 
 function renderFoA(){
   if(!foCache.length)return'<div class="no-data" style="padding:20px 0">No fullout sessions yet.</div>';
   const sessions=[...foCache].filter(s=>s.date).sort((a,b)=>a.date.localeCompare(b.date));
-  let html="";
-
-  /* Hit rates table */
   let totalFo=0;sessions.forEach(s=>{if(s.fullouts)totalFo+=s.fullouts.length;});
-  html+=`<div class="analytics-title">stunt group hit rates</div><div class="analytics-sub">across ${totalFo} fullouts — coloured by hit rate</div>`;
+  let html=`<div class="analytics-title">stunt group hit rates</div><div class="analytics-sub">absent groups excluded from percentage</div>`;
+
   if(totalFo){
-    function foHitRow(name){
-      let s1h=0,s1t=0,s2h=0,s2t=0;
-      sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{
-        const abs=fo.absent&&fo.absent[name];
-        if(!abs){s1t++;if(fo.stunt1Hits&&fo.stunt1Hits[name])s1h++;s2t++;if(fo.stunt2Hits&&fo.stunt2Hits[name])s2h++;}
-      });});
-      const p1=s1t>0?Math.round((s1h/s1t)*100):null;
-      const p2=s2t>0?Math.round((s2h/s2t)*100):null;
-      const cH=s1h+s2h,cT=s1t+s2t,pC=cT>0?Math.round((cH/cT)*100):null;
-      function bc(h,t,p){if(p===null)return`<td style="padding:6px 8px;text-align:center;font-size:11px;color:var(--stone)">--</td><td style="padding:6px 8px"><span style="font-size:10px;color:var(--stone)">n/a</span></td>`;return`<td style="padding:6px 8px;text-align:center;font-size:11px">${h}/${t}</td><td style="padding:6px 8px;min-width:80px"><div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap"><div class="pct-bar" style="width:${p}%;background:${pctCol(p)}"></div></div><span style="font-size:10px;font-weight:700;color:${pctCol(p)}">${p}%</span></div></td>`;}
-      return`<tr style="border-top:1px solid var(--border)"><td style="padding:6px 10px;font-size:11px;font-weight:500">${aL(name)}</td>${bc(s1h,s1t,p1)}${bc(s2h,s2t,p2)}${bc(cH,cT,pC)}</tr>`;
-    }
     html+=`<table style="width:100%;border:1px solid var(--border);border-radius:10px;border-collapse:collapse;overflow:hidden;margin-bottom:18px">
-      <thead><tr style="background:var(--ink)"><th style="padding:6px 10px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:white;text-align:left"></th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#2a2a2a">1st stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#1a1a1a">2nd stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#111">combined</th></tr></thead>
-      <tbody>${ATHLETES.map(foHitRow).join("")}</tbody>
-    </table>`;
+      <thead><tr style="background:var(--ink)"><th style="padding:6px 10px;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:white;text-align:left">group</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#2a2a2a">1st stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#1a1a1a">2nd stunt</th><th colspan="2" style="padding:6px 8px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:white;background:#111">combined</th></tr></thead>
+      <tbody>${ATHLETES.map(name=>{
+        let s1h=0,s1t=0,s2h=0,s2t=0;
+        sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{const abs=fo.absent&&fo.absent[name];if(!abs){s1t++;if(fo.stunt1Hits&&fo.stunt1Hits[name])s1h++;s2t++;if(fo.stunt2Hits&&fo.stunt2Hits[name])s2h++;}});});
+        const p1=s1t>0?Math.round((s1h/s1t)*100):null;
+        const p2=s2t>0?Math.round((s2h/s2t)*100):null;
+        const cH=s1h+s2h,cT=s1t+s2t,pC=cT>0?Math.round((cH/cT)*100):null;
+        function bc(h,t,p){if(p===null)return`<td style="padding:6px 8px;text-align:center;font-size:11px;color:var(--stone)">--</td><td style="padding:6px 8px"><span style="font-size:10px;color:var(--stone)">n/a</span></td>`;return`<td style="padding:6px 8px;text-align:center;font-size:11px">${h}/${t}</td><td style="padding:6px 8px;min-width:80px"><div style="display:flex;align-items:center;gap:4px"><div class="pct-bar-wrap"><div class="pct-bar" style="width:${p}%;background:${pctCol(p)}"></div></div><span style="font-size:10px;font-weight:700;color:${pctCol(p)}">${p}%</span></div></td>`;}
+        return`<tr style="border-top:1px solid var(--border)"><td style="padding:6px 10px;font-size:11px;font-weight:500">${aL(name)}</td>${bc(s1h,s1t,p1)}${bc(s2h,s2t,p2)}${bc(cH,cT,pC)}</tr>`;
+      }).join("")}</tbody></table>`;
   }
 
-  /* Pyramid */
   let pyH=0,pyT=0;sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{pyT++;if(fo.pyramidHit)pyH++;});});
-  if(pyT>0){
-    const pyP=Math.round((pyH/pyT)*100);
-    html+=`<div class="analytics-title" style="margin-top:16px">pyramid hit rate</div><div class="analytics-sub">across all fullouts</div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:16px;margin-bottom:18px">
-      <div class="pct-bar-wrap" style="flex:1;height:8px"><div class="pct-bar" style="width:${pyP}%;background:${pctCol(pyP)}"></div></div>
-      <span style="font-size:22px;font-weight:700;color:${pctCol(pyP)}">${pyP}%</span>
-      <span style="font-size:12px;color:var(--stone)">${pyH}/${pyT} fullouts</span>
-    </div>`;
-  }
+  if(pyT>0){const pyP=Math.round((pyH/pyT)*100);html+=`<div class="analytics-title" style="margin-top:16px">pyramid hit rate</div><div class="analytics-sub">${pyH}/${pyT} fullouts</div><div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:16px;margin-bottom:18px"><div class="pct-bar-wrap" style="flex:1;height:8px"><div class="pct-bar" style="width:${pyP}%;background:${pctCol(pyP)}"></div></div><span style="font-size:22px;font-weight:700;color:${pctCol(pyP)}">${pyP}%</span><span style="font-size:12px;color:var(--stone)">${pyH}/${pyT} fullouts</span></div>`;}
 
-  /* Deductions per session with fullout labels */
   html+=`<div class="analytics-title">deductions over time</div><div class="analytics-sub">per session, broken down by fullout</div>`;
   html+=sessions.map(s=>{
     const tot=s.fullouts?s.fullouts.reduce((sum,fo)=>sum+(fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.pts||d.points)||0),0):0),0):0;
-    return`<div class="fo-session-card">
-      <div class="fo-session-card-hd"><span style="font-family:'DM Serif Display',serif;font-size:15px;font-style:italic">${fmtShort(s.date)}</span><span style="font-size:13px;font-weight:700;color:${tot>0?"var(--red)":"#4a9d6f"}">${tot>0?"-"+tot.toFixed(2):"clean"}</span></div>
-      ${s.fullouts&&s.fullouts.length?s.fullouts.map((fo,fi)=>{
-        const foDed=fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.pts||d.points)||0),0):0;
-        return`<div class="fo-fullout-hd">fullout ${String(fi+1).padStart(2,"0")} — ${foDed>0?"-"+foDed.toFixed(2):"no deductions"}</div>
-        ${fo.deductions&&fo.deductions.length?fo.deductions.map(d=>`<div class="fo-ded-line"><span style="color:var(--red);font-weight:600">-${parseFloat(d.pts||d.points).toFixed(2)}</span> ${esc(d.label)}${d.desc?` <span style="color:var(--stone)">&#8212; ${esc(d.desc)}</span>`:""}</div>`).join(""):'<div class="fo-ded-line" style="color:var(--stone)">No deductions</div>'}`;
-      }).join(""):""}
-    </div>`;
-  }).join("");
+    return`<div class="fo-session-card"><div class="fo-session-card-hd"><span style="font-family:'DM Serif Display',serif;font-size:15px;font-style:italic">${fmtShort(s.date)}</span><span style="font-size:13px;font-weight:700;color:${tot>0?"var(--red)":"#4a9d6f"}">${tot>0?"-"+tot.toFixed(2):"clean"}</span></div>${s.fullouts&&s.fullouts.length?s.fullouts.map((fo,fi)=>{const foDed=fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.pts||d.points)||0),0):0;return`<div class="fo-fo-hd">fullout ${String(fi+1).padStart(2,"0")} — ${foDed>0?"-"+foDed.toFixed(2):"no deductions"}</div>${fo.deductions&&fo.deductions.length?fo.deductions.map(d=>`<div class="fo-ded-line"><span style="color:var(--red);font-weight:600">-${parseFloat(d.pts||d.points).toFixed(2)}</span> ${esc(d.label)}${d.desc?` <span style="color:var(--stone)">&#8212; ${esc(d.desc)}</span>`:""}</div>`).join(""):'<div class="fo-ded-line" style="color:var(--stone)">No deductions</div>'}`; }).join(""):""}`;
+  }).join("")+"</div>";
 
-  /* Avg */
-  const avg=sessions.reduce((sum,s)=>sum+(s.fullouts?s.fullouts.reduce((a,fo)=>a+(fo.deductions?fo.deductions.reduce((x,d)=>x+(parseFloat(d.pts||d.points)||0),0):0),0):0),0)/sessions.length;
+  const avg=sessions.reduce((sum,s)=>sum+(s.fullouts?s.fullouts.reduce((a,fo)=>a+(fo.deductions?fo.deductions.reduce((x,d)=>x+(parseFloat(d.pts||d.points)||0),0):0),0):0),0)/Math.max(sessions.length,1);
   html+=`<div style="background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:9px 13px;display:flex;justify-content:space-between;margin-bottom:18px"><span style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">avg per session</span><span style="font-size:13px;font-weight:700;color:var(--red)">-${avg.toFixed(2)}</span></div>`;
 
-  /* Deduction type breakdown */
   const counts={};
   sessions.forEach(s=>{if(s.fullouts)s.fullouts.forEach(fo=>{if(fo.deductions)fo.deductions.forEach(d=>{counts[d.label]=counts[d.label]||{n:0,pts:0};counts[d.label].n++;counts[d.label].pts+=parseFloat(d.pts||d.points)||0;});});});
   const entries=Object.entries(counts).sort((a,b)=>b[1].n-a[1].n);
-  if(entries.length){
-    html+=`<div class="analytics-title">deduction breakdown</div><div class="analytics-sub">most common infractions</div>
-    <div class="data-table"><div class="table-hd" style="display:grid;grid-template-columns:1fr 60px 80px;padding:7px 12px"><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">infraction</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:center">count</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:right">total pts</span></div>${entries.map(([label,data],i)=>`<div class="table-row" style="display:grid;grid-template-columns:1fr 60px 80px;padding:7px 12px"><span style="font-size:12px">${esc(label)}</span><span style="font-size:12px;color:var(--stone);text-align:center">${data.n}x</span><span style="font-size:12px;font-weight:700;color:var(--red);text-align:right">-${data.pts.toFixed(2)}</span></div>`).join("")}</div>`;
-  }
+  if(entries.length){html+=`<div class="analytics-title">deduction breakdown</div><div class="analytics-sub">most common infractions</div><div class="data-table"><div style="display:grid;grid-template-columns:1fr 60px 80px;background:var(--panel);padding:7px 12px;border-bottom:1px solid var(--border)"><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">infraction</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:center">count</span><span style="font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);text-align:right">total pts</span></div>${entries.map(([label,data],i)=>`<div style="display:grid;grid-template-columns:1fr 60px 80px;padding:7px 12px;border-top:1px solid var(--border);background:${i%2===0?"var(--surface)":"transparent"}"><span style="font-size:12px">${esc(label)}</span><span style="font-size:12px;color:var(--stone);text-align:center">${data.n}x</span><span style="font-size:12px;font-weight:700;color:var(--red);text-align:right">-${data.pts.toFixed(2)}</span></div>`).join("")}</div>`;}
   return html;
 }
 
 /* BUILDER */
 function startBuilder(tplId,existing){
-  currentTplId=tplId;const t=TEMPLATES[tplId];
+  curTplId=tplId;const t=TMPLS[tplId];
   selClIds=new Set(existing?.checklistIds||[]);
-  if(existing){currentPlanId=existing.id;sections=JSON.parse(JSON.stringify(existing.sections||[]));document.getElementById("b-date").value=existing.date||"";}
-  else{currentPlanId=uid();sections=[];document.getElementById("b-date").value=nw(tplId==="monday"?1:3);}
+  if(existing){curPlanId=existing.id;sections=JSON.parse(JSON.stringify(existing.sections||[]));document.getElementById("b-date").value=existing.date||"";}
+  else{curPlanId=uid();sections=[];document.getElementById("b-date").value=nw(tplId==="monday"?1:3);}
   pickedCat=null;
   document.getElementById("b-hd-title").textContent=tplId+" class plan";
   document.getElementById("b-total").textContent=t.duration+" min total";
-  sd("builder","","");
-  renderCatGrid();renderBuilderSecs();updateTimebar();renderBuilderIssues();
+  sd("builder","","");renderCatGrid();renderBuilderSecs();updateTimebar();renderBuilderIssues();
   showScreen("builder");
 }
 function onDateChange(){const v=document.getElementById("b-date").value;document.getElementById("b-date-prev").textContent=v?fmtDate(v):"";updateTimebar();if(v)autoSave();}
-function updateTimebar(){
-  const t=TEMPLATES[currentTplId];const total=sections.reduce((s,x)=>s+(parseInt(x.duration)||0),0);
-  const pct=Math.min((total/t.duration)*100,100),over=total>t.duration;
-  const fill=document.getElementById("b-prog");fill.style.width=pct+"%";fill.style.background=over?"#b33a2d":"#9a9a98";
-  const used=document.getElementById("b-used");used.textContent=total+" min";used.className=over?"red":"";
-}
-function renderCatGrid(){
-  document.getElementById("cat-grid").innerHTML=CATS.map(c=>`<div class="cat-chip${pickedCat===c.id?" sel":""}" onclick="pickCat('${c.id}')"><span class="cat-ic">${c.icon}</span><span>${c.label}</span></div>`).join("");
-  document.getElementById("add-sec-btn").disabled=!pickedCat;
-}
+function updateTimebar(){const t=TMPLS[curTplId];const total=sections.reduce((s,x)=>s+(parseInt(x.duration)||0),0);const pct=Math.min((total/t.duration)*100,100),over=total>t.duration;const fill=document.getElementById("b-prog");fill.style.width=pct+"%";fill.style.background=over?"#b33a2d":"#9a9a98";const used=document.getElementById("b-used");used.textContent=total+" min";used.className=over?"over":"";}
+function renderCatGrid(){document.getElementById("cat-grid").innerHTML=CATS.map(c=>`<div class="cat-chip${pickedCat===c.id?" sel":""}" onclick="pickCat('${c.id}')"><span class="cat-ic">${c.icon}</span><span>${c.label}</span></div>`).join("");document.getElementById("add-sec-btn").disabled=!pickedCat;}
 function pickCat(id){pickedCat=(pickedCat===id)?null:id;renderCatGrid();}
-function addSection(){
-  if(!pickedCat)return;const cat=CATS.find(c=>c.id===pickedCat);
-  const sec={id:uid(),categoryId:pickedCat,duration:10,details:"",comments:""};
-  if(cat&&cat.stunt)sec.stuntData=Object.fromEntries(ATHLETES.map(n=>[n,{attempts:"",hits:""}]));
-  sections.push(sec);pickedCat=null;renderCatGrid();renderBuilderSecs();updateTimebar();
-}
+function addSection(){if(!pickedCat)return;const cat=CATS.find(c=>c.id===pickedCat);const sec={id:uid(),categoryId:pickedCat,duration:10,details:"",comments:""};if(cat&&cat.stunt)sec.stuntData=Object.fromEntries(ATHLETES.map(n=>[n,{attempts:"",hits:""}]));sections.push(sec);pickedCat=null;renderCatGrid();renderBuilderSecs();updateTimebar();}
 function removeSection(id){sections=sections.filter(s=>s.id!==id);renderBuilderSecs();updateTimebar();}
 function moveSection(i,d){const n=[...sections];[n[i],n[i+d]]=[n[i+d],n[i]];sections=n;renderBuilderSecs();}
 function setSecDur(id,val){const s=sections.find(s=>s.id===id);if(s)s.duration=val;renderBuilderSecs();updateTimebar();}
@@ -695,163 +552,163 @@ function setSecDetails(id,val){const s=sections.find(s=>s.id===id);if(s)s.detail
 function renderBuilderSecs(){
   const wrap=document.getElementById("sections-wrap"),list=document.getElementById("sections-list");
   if(!sections.length){wrap.style.display="none";return;}wrap.style.display="flex";
-  list.innerHTML=sections.map((s,i)=>{const cat=CATS.find(c=>c.id===s.categoryId)||{};
-    return`<div class="bsec"><div class="bsec-top"><div class="bsec-lft"><span class="bsec-num">${String(i+1).padStart(2,"0")}</span><span class="cat-ic">${cat.icon||""}</span><span class="bsec-lbl">${cat.label||""}</span></div><div class="bsec-acts"><button class="ic-btn" onclick="moveSection(${i},-1)"${i===0?" disabled":""}>&#9650;</button><button class="ic-btn" onclick="moveSection(${i},1)"${i===sections.length-1?" disabled":""}>&#9660;</button><button class="ic-btn danger" onclick="removeSection('${s.id}')">x</button></div></div><div class="field-block"><span class="lbl-xs">duration</span><div class="tchips">${TIMES.map(t=>`<button class="tchip${s.duration===t?" sel":""}" onclick="setSecDur('${s.id}',${t})">${t}m</button>`).join("")}</div></div><div class="field-block"><span class="lbl-xs">breakdown / details</span><textarea class="ta" rows="2" placeholder="focus points, sequences..." oninput="setSecDetails('${s.id}',this.value)">${esc(s.details||"")}</textarea></div></div>`;
-  }).join("");
+  list.innerHTML=sections.map((s,i)=>{const cat=CATS.find(c=>c.id===s.categoryId)||{};return`<div class="bsec"><div class="bsec-top"><div class="bsec-lft"><span class="bsec-num">${String(i+1).padStart(2,"0")}</span><span class="cat-ic">${cat.icon||""}</span><span class="bsec-lbl">${cat.label||""}</span></div><div class="bsec-acts"><button class="ic-btn" onclick="moveSection(${i},-1)"${i===0?" disabled":""}>&#9650;</button><button class="ic-btn" onclick="moveSection(${i},1)"${i===sections.length-1?" disabled":""}>&#9660;</button><button class="ic-btn danger" onclick="removeSection('${s.id}')">x</button></div></div><div class="field-block"><span class="lbl-xs">duration</span><div class="tchips">${TIMES.map(t=>`<button class="tchip${s.duration===t?" sel":""}" onclick="setSecDur('${s.id}',${t})">${t}m</button>`).join("")}</div></div><div class="field-block"><span class="lbl-xs">breakdown / details</span><textarea class="ta" rows="2" placeholder="focus points..." oninput="setSecDetails('${s.id}',this.value)">${esc(s.details||"")}</textarea></div></div>`;}).join("");
 }
-function buildPlanObj(){return{id:currentPlanId,templateId:currentTplId,date:document.getElementById("b-date").value,sections:JSON.parse(JSON.stringify(sections)),attendance:getPlan(currentPlanId)?.attendance||{},checklistIds:[...selClIds]};}
+function buildPlanObj(){return{id:curPlanId,templateId:curTplId,date:document.getElementById("b-date").value,sections:JSON.parse(JSON.stringify(sections)),attendance:getPlan(curPlanId)?.attendance||{},checklistIds:[...selClIds]};}
 async function autoSave(){const p=buildPlanObj();sd("builder","busy","saving");try{await dbSave(p);sd("builder","ok","saved");}catch{sd("builder","err","failed");}}
 async function savePlan(){const p=buildPlanObj();sd("builder","busy","saving");try{await dbSave(p);sd("builder","ok","saved");openPlan(p.id);}catch{sd("builder","err","failed");}}
 
-/* PLAN */
+/* PLAN VIEW */
 function openPlan(id){
-  const plan=getPlan(id)||plansCache.find(p=>p.id===id);if(!plan)return;
-  currentPlanId=id;const t=TEMPLATES[plan.templateId]||{};
+  const plan=getPlan(id)||(plansCache.find(p=>p.id===id));if(!plan)return;
+  curPlanId=id;const t=TMPLS[plan.templateId]||{};
   document.getElementById("p-hd-title").textContent=(t.display||"").toLowerCase()+" class plan";
   document.getElementById("p-time").textContent=t.time||"";
   document.getElementById("p-date").textContent=plan.date?fmtDate(plan.date):"";
   const total=plan.sections.reduce((s,x)=>s+(parseInt(x.duration)||0),0);
   document.getElementById("p-dur").textContent=total+" min — "+t.duration+" min total";
   sd("plan","ok","");renderAttendance(plan);renderPlanSections(plan);renderPlanCL();
-  showScreen("plan");
+  showScreen("plan-view");
 }
-function renderAttendance(plan){
-  document.getElementById("attend-list").innerHTML=ATHLETES.map(name=>{const on=!!(plan.attendance&&plan.attendance[name]);return`<div class="attend-item${on?" on":""}" onclick="toggleAttend('${name}')"><span class="tick">${on?"v":""}</span><span class="aname">${aL(name)}</span></div>`;}).join("");
-}
-async function toggleAttend(name){
-  const plan=getPlan(currentPlanId);if(!plan)return;
-  plan.attendance=plan.attendance||{};plan.attendance[name]=!plan.attendance[name];
-  sd("plan","busy","saving");try{await dbSave(plan);sd("plan","ok","saved");}catch{sd("plan","err","failed");}
-  renderAttendance(plan);
-}
+function renderAttendance(plan){document.getElementById("attend-list").innerHTML=ATHLETES.map(name=>{const on=!!(plan.attendance&&plan.attendance[name]);return`<div class="attend-item${on?" on":""}" onclick="toggleAttend('${name}')"><span class="tick">${on?"v":""}</span><span class="aname">${aL(name)}</span></div>`;}).join("");}
+async function toggleAttend(name){const plan=getPlan();if(!plan)return;plan.attendance=plan.attendance||{};plan.attendance[name]=!plan.attendance[name];sd("plan","busy","saving");try{await dbSave(plan);sd("plan","ok","saved");}catch{sd("plan","err","failed");}renderAttendance(plan);}
 function renderPlanSections(plan){
-  document.getElementById("plan-sections").innerHTML=plan.sections.map((sec,i)=>{
-    const cat=CATS.find(c=>c.id===sec.categoryId)||{};
-    let html=`<div class="plan-block"><div class="plan-block-hd"><div class="blk-lft"><span class="blk-num">${String(i+1).padStart(2,"0")}</span><span class="cat-ic" style="font-size:10px;color:var(--putty)">${cat.icon||""}</span><span class="blk-title">${cat.label||""}</span></div><span class="dur-tag">${sec.duration} min</span></div><div class="plan-block-body">`;
-    if(sec.details)html+=`<div class="plan-field"><div class="plan-field-lbl">breakdown</div><div class="detail-text">${esc(sec.details)}</div></div>`;
-    if(cat.stunt)html+=`<div class="plan-field"><div class="plan-field-lbl">stunt tracking</div><div class="stunt-tbl"><div class="stunt-tbl-hd"><span>group</span><span>attempts</span><span>hits</span></div>${ATHLETES.map(name=>`<div class="stunt-tbl-row"><span class="sname">${aL(name)}</span><input type="number" min="0" class="stunt-inp" placeholder="--" value="${esc(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].attempts||"":""))}" oninput="updateStunt('${sec.id}','${name}','attempts',this.value)"/><input type="number" min="0" class="stunt-inp" placeholder="--" value="${esc(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].hits||"":""))}" oninput="updateStunt('${sec.id}','${name}','hits',this.value)"/></div>`).join("")}</div></div>`;
-    html+=`<div class="plan-field"><div class="plan-field-lbl">comments</div><textarea class="plan-ta" rows="2" placeholder="notes from practice..." oninput="updateComment('${sec.id}',this.value)">${esc(sec.comments||"")}</textarea></div></div></div>`;
-    return html;
-  }).join("")+`<div class="end-mark">-- end of plan --</div>`;
+  document.getElementById("plan-sections").innerHTML=plan.sections.map((sec,i)=>{const cat=CATS.find(c=>c.id===sec.categoryId)||{};let html=`<div class="plan-block"><div class="plan-block-hd"><div class="blk-lft"><span class="blk-num">${String(i+1).padStart(2,"0")}</span><span class="cat-ic" style="font-size:10px;color:var(--putty)">${cat.icon||""}</span><span class="blk-title">${cat.label||""}</span></div><span class="dur-tag">${sec.duration} min</span></div><div class="plan-block-body">`;if(sec.details)html+=`<div class="plan-field"><div class="plan-field-lbl">breakdown</div><div class="detail-text">${esc(sec.details)}</div></div>`;if(cat.stunt)html+=`<div class="plan-field"><div class="plan-field-lbl">stunt tracking</div><div class="stunt-tbl"><div class="stunt-tbl-hd"><span>group</span><span>attempts</span><span>hits</span></div>${ATHLETES.map(name=>`<div class="stunt-tbl-row"><span style="font-size:11px">${aL(name)}</span><input type="number" min="0" class="stunt-inp" placeholder="--" value="${esc(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].attempts||"":""))}" oninput="updateStunt('${sec.id}','${name}','attempts',this.value)"/><input type="number" min="0" class="stunt-inp" placeholder="--" value="${esc(String(sec.stuntData&&sec.stuntData[name]?sec.stuntData[name].hits||"":""))}" oninput="updateStunt('${sec.id}','${name}','hits',this.value)"/></div>`).join("")}</div></div>`;html+=`<div class="plan-field"><div class="plan-field-lbl">comments</div><textarea class="plan-ta" rows="2" placeholder="notes from practice..." oninput="updateComment('${sec.id}',this.value)">${esc(sec.comments||"")}</textarea></div></div></div>`;return html;}).join("")+`<div class="end-mark">-- end of plan --</div>`;
 }
-function schedSave(){clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{const plan=getPlan(currentPlanId);if(!plan)return;sd("plan","busy","saving");try{await dbSave(plan);sd("plan","ok","saved");}catch{sd("plan","err","failed");}},1200);}
-function updateComment(secId,val){const plan=getPlan(currentPlanId);if(!plan)return;const s=plan.sections.find(s=>s.id===secId);if(s)s.comments=val;schedSave();}
-function updateStunt(secId,name,field,val){const plan=getPlan(currentPlanId);if(!plan)return;const s=plan.sections.find(s=>s.id===secId);if(!s)return;s.stuntData=s.stuntData||{};s.stuntData[name]=s.stuntData[name]||{attempts:"",hits:""};s.stuntData[name][field]=val;schedSave();}
-function editPlan(){const plan=getPlan(currentPlanId);if(!plan)return;startBuilder(plan.templateId,plan);}
+function schedSave(){clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{const plan=getPlan();if(!plan)return;sd("plan","busy","saving");try{await dbSave(plan);sd("plan","ok","saved");}catch{sd("plan","err","failed");}},1200);}
+function updateComment(secId,val){const plan=getPlan();if(!plan)return;const s=plan.sections.find(s=>s.id===secId);if(s)s.comments=val;schedSave();}
+function updateStunt(secId,name,field,val){const plan=getPlan();if(!plan)return;const s=plan.sections.find(s=>s.id===secId);if(!s)return;s.stuntData=s.stuntData||{};s.stuntData[name]=s.stuntData[name]||{attempts:"",hits:""};s.stuntData[name][field]=val;schedSave();}
+function editPlan(){const plan=getPlan();if(!plan)return;startBuilder(plan.templateId,plan);}
 
 /* FULLOUTS */
 function renderFoList(){
   const list=document.getElementById("fo-session-list");if(!list)return;
   if(!foCache.length){list.innerHTML='<div style="font-size:11px;color:#444;font-style:italic;padding:8px 0">No sessions yet.</div>';return;}
-  list.innerHTML=foCache.map(s=>`<div class="fo-session-row${s.id===curFoId?" active":""}" onclick="openFoSession('${s.id}')"><div class="fo-session-date">${s.date?fmtShort(s.date):"no date"}</div><div class="fo-session-count">${s.fullouts?s.fullouts.length:0} fullout${s.fullouts&&s.fullouts.length!==1?"s":""}</div></div>`).join("");
+  list.innerHTML=foCache.map(s=>`<div class="fo-session-row${s.id===curFoId?" active":""}" onclick="openFoSession('${s.id}')"><div class="fo-session-date">${s.date?fmtShort(s.date):"no date"}</div><div class="fo-session-cnt">${s.fullouts?s.fullouts.length:0} fullout${s.fullouts&&s.fullouts.length!==1?"s":""}</div></div>`).join("");
 }
-async function addFoSession(){const s={id:uid(),date:new Date().toISOString().split("T")[0],issues:"",fullouts:[]};sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");openFoSession(s.id);}catch{sd("fo","err","failed");}}
+async function addFoSession(){const s={id:uid(),date:new Date().toISOString().split("T")[0],notes:"",fullouts:[]};sd("fo","busy","saving");try{await foCol.doc(s.id).set(s);sd("fo","ok","saved");openFoSession(s.id);}catch{sd("fo","err","failed");}}
 function openFoSession(id){curFoId=id;renderFoList();renderFoRight();}
 
-function renderFoRight(){
-  const session=getFo(curFoId);
-  if(!session){document.getElementById("fo-right").innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Select a session or create a new one.</div>';return;}
-  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="font-family:'DM Serif Display',serif;font-size:22px;font-style:italic">fullout session</h2><button class="del-btn" style="font-size:12px" onclick="delFoSession()">delete</button></div>`;
-  html+=`<div class="fo-card"><div class="fo-card-hd"><span class="fo-card-title">session details</span></div><div class="fo-card-body"><div><div class="fo-lbl">date</div><input type="date" class="fo-inp" value="${esc(session.date||"")}" oninput="updateFoField('date',this.value)"/></div><div><div class="fo-lbl">general notes</div><textarea class="fo-ta" rows="2" placeholder="overall session notes..." oninput="updateFoField('issues',this.value)">${esc(session.issues||"")}</textarea></div></div></div>`;
+function pinkChk(on,onclick){return`<div style="width:20px;height:20px;border:1.5px solid ${on?"#c4559a":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${on?"#c4559a":"transparent"};cursor:pointer" onclick="${onclick}"><span style="color:white;font-size:10px;font-weight:700">${on?"v":""}</span></div>`;}
 
-  if(session.fullouts){session.fullouts.forEach((fo,fi)=>{
-    const foDed=fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.pts||d.points)||0),0):0;
-    const s1h=fo.stunt1Hits||{},s2h=fo.stunt2Hits||{},pyH=!!(fo.pyramidHit);
-    html+=`<div class="fo-card"><div class="fo-card-hd"><span class="fo-card-title">fullout ${String(fi+1).padStart(2,"0")}</span><button class="del-btn" onclick="removeFullout(${fi})">remove</button></div><div class="fo-card-body">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
-      <div>
-        <div class="fo-lbl">deductions</div>
-        ${fo.deductions&&fo.deductions.length?`<div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px">${fo.deductions.map((d,di)=>`<div class="ded-row"><div class="ded-top-row"><div class="ded-tag">${esc(d.label)}</div><span class="ded-pts">-${parseFloat(d.pts||d.points).toFixed(2)}</span><button class="ded-remove" onclick="removeDed(${fi},${di})">x</button></div><input class="ded-desc-inp" placeholder="e.g. Georgia - half up fell" value="${esc(d.desc||"")}" oninput="updateDedDesc(${fi},${di},this.value)"/></div>`).join("")}<div class="ded-total-bar"><span style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">total</span><span style="font-size:15px;font-weight:700;color:var(--red)">-${foDed.toFixed(2)}</span></div></div>`:""}
-        <div style="position:relative" id="dd-wrap-${fi}"><button class="add-ded-btn" onclick="toggleDD(${fi})">+ add deduction</button>
-        <div class="ded-menu" id="ded-menu-${fi}" style="display:none">${DED_TYPES.map(cat=>`<div class="ded-menu-hd">${cat.cat}</div>${cat.items.map(item=>`<div class="ded-menu-opt" onclick="addDed(${fi},'${esc(item.label)}',${item.pts})"><span>${esc(item.label)}</span><span class="opt-pts">-${item.pts.toFixed(2)}</span></div>`).join("")}`).join("")}</div></div>
-      </div>
-      <div>
-        <div class="fo-lbl">stunt group hits</div>
-        <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
-          <div style="display:grid;grid-template-columns:1fr 44px 44px 54px;background:var(--panel);padding:5px 10px;border-bottom:1px solid var(--border)">
-            <span style="font-size:8px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--stone)">group</span>
-            <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st1</span>
-            <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st2</span>
-            <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">absent</span>
+function renderFoRight(){
+  const el=document.getElementById("fo-right");if(!el)return;
+  const session=getFo();
+  if(!session){el.innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Select a session or create a new one.</div>';return;}
+  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="font-family:'DM Serif Display',serif;font-size:22px;font-style:italic">fullout session</h2><button class="del-btn" onclick="delFoSession()">delete</button></div>`;
+  html+=`<div class="fo-card"><div class="fo-card-hd"><span class="fo-card-title">session details</span></div><div class="fo-card-body"><div><div class="fo-lbl">date</div><input type="date" class="fo-inp" value="${esc(session.date||"")}" oninput="updateFoField('date',this.value)"/></div><div><div class="fo-lbl">general notes</div><textarea class="fo-ta" rows="2" placeholder="overall session notes..." oninput="updateFoField('notes',this.value)">${esc(session.notes||"")}</textarea></div></div></div>`;
+
+  if(session.fullouts){
+    session.fullouts.forEach((fo,fi)=>{
+      const foDed=fo.deductions?fo.deductions.reduce((a,d)=>a+(parseFloat(d.pts||d.points)||0),0):0;
+      const s1h=fo.stunt1Hits||{},s2h=fo.stunt2Hits||{},pyH=!!(fo.pyramidHit),absent=fo.absent||{};
+      html+=`<div class="fo-card"><div class="fo-card-hd"><span class="fo-card-title">fullout ${String(fi+1).padStart(2,"0")}</span><button class="del-btn" onclick="removeFullout(${fi})">remove</button></div><div class="fo-card-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+        <div>
+          <div class="fo-lbl">deductions</div>
+          ${fo.deductions&&fo.deductions.length?`<div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px">${fo.deductions.map((d,di)=>`<div class="ded-row"><div class="ded-top"><div class="ded-tag">${esc(d.label)}</div><span class="ded-pts">-${parseFloat(d.pts||d.points).toFixed(2)}</span><button class="ded-rem" onclick="removeDed(${fi},${di})">x</button></div><input class="ded-desc" placeholder="e.g. half up fell" value="${esc(d.desc||"")}" oninput="updateDedDesc(${fi},${di},this.value)"/></div>`).join("")}<div class="ded-total"><span style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone)">total</span><span style="font-size:15px;font-weight:700;color:var(--red)">-${foDed.toFixed(2)}</span></div></div>`:""}
+          <div style="position:relative" id="dd-wrap-${fi}"><button class="add-ded-btn" onclick="toggleDD(${fi})">+ add deduction</button>
+          <div class="ded-menu" id="ded-menu-${fi}" style="display:none">${DED_TYPES.map(cat=>`<div class="ded-menu-hd">${cat.cat}</div>${cat.items.map(item=>`<div class="ded-menu-opt" onclick="addDed(${fi},'${esc(item.label)}',${item.pts})"><span>${esc(item.label)}</span><span class="opt-pts">-${item.pts.toFixed(2)}</span></div>`).join("")}`).join("")}</div></div>
+        </div>
+        <div>
+          <div class="fo-lbl">stunt group hits</div>
+          <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:1fr 36px 36px 50px;background:var(--panel);padding:5px 10px;border-bottom:1px solid var(--border)">
+              <span style="font-size:8px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--stone)">group</span>
+              <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st1</span>
+              <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">st2</span>
+              <span style="font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--stone);text-align:center">absent</span>
+            </div>
+            ${ATHLETES.map(name=>{
+              const o1=!!(s1h[name]),o2=!!(s2h[name]),abs=!!(absent[name]);
+              return`<div style="display:grid;grid-template-columns:1fr 36px 36px 50px;align-items:center;padding:5px 10px;border-top:1px solid var(--border);background:${abs?"rgba(180,0,0,0.04)":"transparent"}">
+                <span style="font-size:11px;font-weight:500;color:${abs?"var(--stone)":"var(--ink)"}">${aL(name)}${abs?` <span style='font-size:9px;color:#b33a2d'>(absent)</span>`:""}</span>
+                <div style="display:flex;justify-content:center;opacity:${abs?"0.25":"1"}">${pinkChk(o1&&!abs,abs?"":"toggleStuntHit("+fi+",'stunt1Hits','"+name+"')")}</div>
+                <div style="display:flex;justify-content:center;opacity:${abs?"0.25":"1"}">${pinkChk(o2&&!abs,abs?"":"toggleStuntHit("+fi+",'stunt2Hits','"+name+"')")}</div>
+                <div style="display:flex;justify-content:center"><div style="width:20px;height:20px;border:1.5px solid ${abs?"#b33a2d":"var(--border)"};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${abs?"#b33a2d":"transparent"};cursor:pointer" onclick="toggleAbsent(${fi},'${name}')"><span style="color:white;font-size:10px;font-weight:700">${abs?"x":""}</span></div></div>
+              </div>`;
+            }).join("")}
           </div>
-          ${ATHLETES.map(name=>{
-            const o1=!!(s1h[name]),o2=!!(s2h[name]),abs=!!(fo.absent&&fo.absent[name]);
-            const pink='#c4559a';
-            const b1=`<div style="display:flex;justify-content:center;cursor:pointer;opacity:${abs?'0.25':'1'}" onclick="${abs?'':('toggleStuntHit('+fi+',\'stunt1Hits\',\''+name+'\')' )}"><div style="width:20px;height:20px;border:1.5px solid ${o1&&!abs?pink:'var(--border)'};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${o1&&!abs?pink:'transparent'}"><span style="color:white;font-size:10px;font-weight:700">${o1&&!abs?'v':''}</span></div></div>`;
-            const b2=`<div style="display:flex;justify-content:center;cursor:pointer;opacity:${abs?'0.25':'1'}" onclick="${abs?'':('toggleStuntHit('+fi+',\'stunt2Hits\',\''+name+'\')' )}"><div style="width:20px;height:20px;border:1.5px solid ${o2&&!abs?pink:'var(--border)'};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${o2&&!abs?pink:'transparent'}"><span style="color:white;font-size:10px;font-weight:700">${o2&&!abs?'v':''}</span></div></div>`;
-            const bA=`<div style="display:flex;justify-content:center;cursor:pointer" onclick="toggleAbsent(${fi},'${name}')"><div style="width:20px;height:20px;border:1.5px solid ${abs?'#b33a2d':'var(--border)'};border-radius:4px;display:flex;align-items:center;justify-content:center;background:${abs?'#b33a2d':'transparent'}"><span style="color:white;font-size:10px;font-weight:700">${abs?'x':''}</span></div></div>`;
-            return`<div style="display:grid;grid-template-columns:1fr 44px 44px 54px;align-items:center;padding:5px 10px;border-top:1px solid var(--border);background:${abs?'rgba(180,0,0,0.04)':'transparent'}"><span style="font-size:11px;font-weight:500;color:${abs?'var(--stone)':'var(--ink)'}">${aL(name)}${abs?" <span style='font-size:9px;color:#b33a2d'>(absent)</span>":''}</span>${b1}${b2}${bA}</div>`;
-          }).join("")}
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid ${pyH?"#4a9d6f":"var(--border)"};border-radius:7px;cursor:pointer;background:${pyH?"#f0faf5":"transparent"};margin-top:8px" onclick="togglePyramidHit(${fi})">
-          <div style="width:20px;height:20px;border:1.5px solid ${pyH?"#c4559a":"var(--border)"};border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${pyH?"#c4559a":"transparent"}"><span style="color:white;font-size:10px;font-weight:700">${pyH?"v":""}</span></div>
-          <span style="font-size:12px;font-weight:${pyH?"600":"400"};color:${pyH?"#c4559a":"var(--stone)"}">pyramid hit</span>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid ${pyH?"#c4559a":"var(--border)"};border-radius:7px;cursor:pointer;background:${pyH?"#fdf0f8":"transparent"};margin-top:8px" onclick="togglePyramidHit(${fi})">
+            ${pinkChk(pyH,"togglePyramidHit("+fi+")")}
+            <span style="font-size:12px;font-weight:${pyH?"600":"400"};color:${pyH?"#c4559a":"var(--stone)"}">pyramid hit</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="fo-lbl">problems / things to fix</div>
-      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px">
-        ${fo.problems&&fo.problems.length?fo.problems.map((p,pi)=>`<div class="prob-item${p.done?" done":""}"><div class="prob-chk${p.done?" done":""}" onclick="toggleProb(${fi},${pi})"></div><span class="prob-txt">${esc(p.text)}</span><button class="prob-remove" onclick="removeProb(${fi},${pi})">x</button></div>`).join(""):'<div style="padding:10px 12px;font-size:11px;color:var(--stone);font-style:italic">No problems added yet.</div>'}
+      <div>
+        <div class="fo-lbl">problems / things to fix</div>
+        <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px">
+          ${fo.problems&&fo.problems.length?fo.problems.map((p,pi)=>`<div class="prob-item${p.done?" done":""}"><div class="prob-chk${p.done?" done":""}" onclick="toggleProb(${fi},${pi})"></div><span class="prob-txt">${esc(p.text)}</span><button class="prob-rem" onclick="removeProb(${fi},${pi})">x</button></div>`).join(""):'<div style="padding:10px 12px;font-size:11px;color:var(--stone);font-style:italic">No problems added yet.</div>'}
+        </div>
+        <div style="display:flex;gap:8px"><input id="prob-inp-${fi}" placeholder="Add a problem or thing to fix..." style="flex:1;padding:7px 10px;background:var(--panel);border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none" onkeydown="if(event.key==='Enter')addProb(${fi})"/><button class="add-item-btn" style="padding:7px 12px" onclick="addProb(${fi})">+ add</button></div>
       </div>
-      <div style="display:flex;gap:8px"><input id="prob-inp-${fi}" placeholder="Add a problem or thing to fix..." style="flex:1;padding:7px 10px;background:var(--panel);border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none" onkeydown="if(event.key==='Enter')addProb(${fi})"/><button class="add-item-btn" style="padding:7px 12px" onclick="addProb(${fi})">+ add</button></div>
-    </div>
-    <div><div class="fo-lbl">video link</div>${fo.videoUrl?`<div style="display:flex;align-items:center;gap:8px"><input class="fo-inp" value="${esc(fo.videoUrl)}" oninput="updateFoVideo(${fi},this.value)"/><a href="${esc(fo.videoUrl)}" target="_blank" style="font-size:12px;color:#4a9d6f">open</a></div>`:`<input class="fo-inp" value="" oninput="updateFoVideo(${fi},this.value)" placeholder="Paste YouTube, Drive or iCloud link..."/>`}</div>
-    </div></div>`;
-  });}
+      <div><div class="fo-lbl">video link</div>${fo.videoUrl?`<div style="display:flex;align-items:center;gap:8px"><input class="fo-inp" value="${esc(fo.videoUrl)}" oninput="updateFoVideo(${fi},this.value)"/><a href="${esc(fo.videoUrl)}" target="_blank" style="font-size:12px;color:#4a9d6f">open</a></div>`:`<input class="fo-inp" value="" oninput="updateFoVideo(${fi},this.value)" placeholder="Paste video link..."/>`}</div>
+      </div></div>`;
+    });
+  }
   html+=`<button style="width:100%;padding:9px;background:var(--panel);border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer" onclick="addFullout()">+ add fullout</button>`;
-  document.getElementById("fo-right").innerHTML=html;
+  el.innerHTML=html;
 }
 
 function toggleDD(fi){const menu=document.getElementById("ded-menu-"+fi),wrap=document.getElementById("dd-wrap-"+fi);if(!menu)return;const open=menu.style.display!=="none";document.querySelectorAll(".ded-menu").forEach(m=>m.style.display="none");activeDedDD=null;if(!open){menu.style.display="block";activeDedDD=wrap;}}
-async function updateFoField(f,v){const s=getFo(curFoId);if(!s)return;s[f]=v;await foSave(s);}
-async function updateFoVideo(fi,v){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].videoUrl=v;await foSave(s);}
-async function updateDedDesc(fi,di,v){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions[di].desc=v;await foSave(s);}
-async function addFullout(){const s=getFo(curFoId);if(!s)return;s.fullouts=s.fullouts||[];s.fullouts.push({id:uid(),deductions:[],problems:[],videoUrl:"",stunt1Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),stunt2Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),pyramidHit:false,absent:Object.fromEntries(ATHLETES.map(n=>[n,false]))});sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
-async function removeFullout(fi){if(!confirm("Remove?"))return;const s=getFo(curFoId);if(!s)return;s.fullouts.splice(fi,1);await foSave(s);renderFoRight();}
-async function addDed(fi,label,pts){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions=s.fullouts[fi].deductions||[];s.fullouts[fi].deductions.push({label,pts,desc:""});document.querySelectorAll(".ded-menu").forEach(m=>m.style.display="none");activeDedDD=null;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
-async function removeDed(fi,di){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions.splice(di,1);await foSave(s);renderFoRight();}
+async function updateFoField(f,v){const s=getFo();if(!s)return;s[f]=v;await foSave(s);}
+async function updateFoVideo(fi,v){const s=getFo();if(!s)return;s.fullouts[fi].videoUrl=v;await foSave(s);}
+async function updateDedDesc(fi,di,v){const s=getFo();if(!s)return;s.fullouts[fi].deductions[di].desc=v;await foSave(s);}
+
+async function addFullout(){
+  const s=getFo();if(!s)return;
+  s.fullouts=s.fullouts||[];
+  s.fullouts.push({id:uid(),deductions:[],problems:[],videoUrl:"",stunt1Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),stunt2Hits:Object.fromEntries(ATHLETES.map(n=>[n,false])),pyramidHit:false,absent:{}});
+  await foSave(s);renderFoRight();
+}
+async function removeFullout(fi){if(!confirm("Remove?"))return;const s=getFo();if(!s)return;s.fullouts.splice(fi,1);await foSave(s);renderFoRight();}
+async function addDed(fi,label,pts){const s=getFo();if(!s)return;s.fullouts[fi].deductions=s.fullouts[fi].deductions||[];s.fullouts[fi].deductions.push({label,pts,desc:""});document.querySelectorAll(".ded-menu").forEach(m=>m.style.display="none");activeDedDD=null;await foSave(s);renderFoRight();}
+async function removeDed(fi,di){const s=getFo();if(!s)return;s.fullouts[fi].deductions.splice(di,1);await foSave(s);renderFoRight();}
+
 async function addProb(fi){
-  const inp=document.getElementById("prob-inp-"+fi);
-  const txt=inp?inp.value.trim():"";
-  if(!txt)return;
-  const s=getFo(curFoId);if(!s)return;
-  // Save to checklist collection so it appears in checklist tab + class plan
+  const inp=document.getElementById("prob-inp-"+fi);const txt=inp?inp.value.trim():"";if(!txt)return;
+  const s=getFo();if(!s)return;
   const clItem={id:uid(),text:txt,done:false,created_at:new Date().toISOString(),source:"fullout"};
   await clSave(clItem);
-  // Also store reference in the fullout
   s.fullouts[fi].problems=s.fullouts[fi].problems||[];
   s.fullouts[fi].problems.push({id:clItem.id,text:txt,done:false});
-  sd("fo","busy","saving");
-  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
-  catch{sd("fo","err","failed");}
+  await foSave(s);renderFoRight();
 }
-async function removeProb(fi,pi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].problems.splice(pi,1);await foSave(s);renderFoRight();}
+async function removeProb(fi,pi){const s=getFo();if(!s)return;s.fullouts[fi].problems.splice(pi,1);await foSave(s);renderFoRight();}
 async function toggleProb(fi,pi){
-  const s=getFo(curFoId);if(!s)return;
+  const s=getFo();if(!s)return;
   s.fullouts[fi].problems[pi].done=!s.fullouts[fi].problems[pi].done;
-  // Sync done state to checklist collection
-  const clItem=clCache.find(i=>i.id===s.fullouts[fi].problems[pi].id);
-  if(clItem){clItem.done=s.fullouts[fi].problems[pi].done;await clSave(clItem);}
-  sd("fo","busy","saving");
-  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
-  catch{sd("fo","err","failed");}
+  const cl=clCache.find(i=>i.id===s.fullouts[fi].problems[pi].id);
+  if(cl){cl.done=s.fullouts[fi].problems[pi].done;await clSave(cl);}
+  await foSave(s);renderFoRight();
+}
+async function toggleStuntHit(fi,field,name){
+  const s=getFo();if(!s)return;
+  s.fullouts[fi][field]=s.fullouts[fi][field]||{};
+  s.fullouts[fi][field][name]=!s.fullouts[fi][field][name];
+  await foSave(s);renderFoRight();
+}
+async function togglePyramidHit(fi){
+  const s=getFo();if(!s)return;
+  s.fullouts[fi].pyramidHit=!s.fullouts[fi].pyramidHit;
+  await foSave(s);renderFoRight();
 }
 async function toggleAbsent(fi,name){
-  const s=getFo(curFoId);if(!s)return;
+  const s=getFo();if(!s)return;
   s.fullouts[fi].absent=s.fullouts[fi].absent||{};
   s.fullouts[fi].absent[name]=!s.fullouts[fi].absent[name];
-  // If marking absent, clear their hits
   if(s.fullouts[fi].absent[name]){
     if(s.fullouts[fi].stunt1Hits)s.fullouts[fi].stunt1Hits[name]=false;
     if(s.fullouts[fi].stunt2Hits)s.fullouts[fi].stunt2Hits[name]=false;
   }
-  sd("fo","busy","saving");
-  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
-  catch{sd("fo","err","failed");}
-}const s=getFo(curFoId);if(!s)return;s.fullouts[fi][field]=s.fullouts[fi][field]||{};s.fullouts[fi][field][name]=!s.fullouts[fi][field][name];sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
-async function togglePyramidHit(fi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].pyramidHit=!s.fullouts[fi].pyramidHit;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
-async function delFoSession(){if(!confirm("Delete?"))return;await foDel(curFoId);curFoId=null;document.getElementById("fo-right").innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Session deleted.</div>';}
+  await foSave(s);renderFoRight();
+}
+async function delFoSession(){
+  if(!confirm("Delete?"))return;
+  await foCol.doc(curFoId).delete();
+  curFoId=null;
+  document.getElementById("fo-right").innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Session deleted.</div>';
+}
 
 startLiveSync();
 </script>
