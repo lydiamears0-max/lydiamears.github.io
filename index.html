@@ -799,9 +799,32 @@ async function addFullout(){const s=getFo(curFoId);if(!s)return;s.fullouts=s.ful
 async function removeFullout(fi){if(!confirm("Remove?"))return;const s=getFo(curFoId);if(!s)return;s.fullouts.splice(fi,1);await foSave(s);renderFoRight();}
 async function addDed(fi,label,pts){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions=s.fullouts[fi].deductions||[];s.fullouts[fi].deductions.push({label,pts,desc:""});document.querySelectorAll(".ded-menu").forEach(m=>m.style.display="none");activeDedDD=null;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function removeDed(fi,di){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].deductions.splice(di,1);await foSave(s);renderFoRight();}
-async function addProb(fi){const inp=document.getElementById("prob-inp-"+fi);const txt=inp?inp.value.trim():"";if(!txt)return;const s=getFo(curFoId);if(!s)return;s.fullouts[fi].problems=s.fullouts[fi].problems||[];s.fullouts[fi].problems.push({id:uid(),text:txt,done:false});sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
+async function addProb(fi){
+  const inp=document.getElementById("prob-inp-"+fi);
+  const txt=inp?inp.value.trim():"";
+  if(!txt)return;
+  const s=getFo(curFoId);if(!s)return;
+  // Save to checklist collection so it appears in checklist tab + class plan
+  const clItem={id:uid(),text:txt,done:false,created_at:new Date().toISOString(),source:"fullout"};
+  await clSave(clItem);
+  // Also store reference in the fullout
+  s.fullouts[fi].problems=s.fullouts[fi].problems||[];
+  s.fullouts[fi].problems.push({id:clItem.id,text:txt,done:false});
+  sd("fo","busy","saving");
+  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
+  catch{sd("fo","err","failed");}
+}
 async function removeProb(fi,pi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].problems.splice(pi,1);await foSave(s);renderFoRight();}
-async function toggleProb(fi,pi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].problems[pi].done=!s.fullouts[fi].problems[pi].done;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
+async function toggleProb(fi,pi){
+  const s=getFo(curFoId);if(!s)return;
+  s.fullouts[fi].problems[pi].done=!s.fullouts[fi].problems[pi].done;
+  // Sync done state to checklist collection
+  const clItem=clCache.find(i=>i.id===s.fullouts[fi].problems[pi].id);
+  if(clItem){clItem.done=s.fullouts[fi].problems[pi].done;await clSave(clItem);}
+  sd("fo","busy","saving");
+  try{await foSave(s);sd("fo","ok","saved");renderFoRight();}
+  catch{sd("fo","err","failed");}
+}
 async function toggleStuntHit(fi,field,name){const s=getFo(curFoId);if(!s)return;s.fullouts[fi][field]=s.fullouts[fi][field]||{};s.fullouts[fi][field][name]=!s.fullouts[fi][field][name];sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function togglePyramidHit(fi){const s=getFo(curFoId);if(!s)return;s.fullouts[fi].pyramidHit=!s.fullouts[fi].pyramidHit;sd("fo","busy","saving");try{await foSave(s);sd("fo","ok","saved");renderFoRight();}catch{sd("fo","err","failed");}}
 async function delFoSession(){if(!confirm("Delete?"))return;await foDel(curFoId);curFoId=null;document.getElementById("fo-right").innerHTML='<div class="no-data" style="padding:40px 0;text-align:center">Session deleted.</div>';}
